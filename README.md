@@ -1,8 +1,8 @@
-# PiiLearn-backend
+# PiiLearn-web-frontend
 ***
 ## Overview 
 ***
-This is the new backend of the project piilearn. A better approach compared with the 
+This is the new frontend of the project piilearn. A better approach compared with the 
 first version ([backend implemented using Django(Python)](https://github.com/eliaschikwanda/pi-learn-1.0)).
 
 ## Features
