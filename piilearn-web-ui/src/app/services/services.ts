@@ -1,0 +1,10 @@
+export { YearService } from './services/year.service';
+export { VariantService } from './services/variant.service';
+export { UserService } from './services/user.service';
+export { SubjectsService } from './services/subjects.service';
+export { SeasonService } from './services/season.service';
+export { MultipleChoiceQuestionsService } from './services/multiple-choice-questions.service';
+export { MultipleChoiceOptionsService } from './services/multiple-choice-options.service';
+export { ExamBoardService } from './services/exam-board.service';
+export { EducationLevelService } from './services/education-level.service';
+export { AuthenticationService } from './services/authentication.service';
