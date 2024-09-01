@@ -25,3 +25,10 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Notes
+- To generate services for backend from OpenAPI
+- Open the swagger UI interface click on the link *(/api/v1/v3/api-docs)* to get API specification
+- Copy the API specs and paste in the json file in your project
+- Use the ng-open-api-gen to generate the services (npm i ng-openapi-gen)
+- Look at the docs for more
