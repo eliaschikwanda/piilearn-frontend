@@ -1,0 +1,26 @@
+<div class="container-fluid card login-container">
+<!--  Header top -->
+  <div class="mt-3">
+    <h3 class="text-center">PiiLearn</h3>
+  </div>
+  <hr>
+  <div class="alert alert-danger" role="alert" *ngIf="errorMsg.length != 0">
+    <p *ngFor="let msg of errorMsg">{{msg}}</p>
+  </div>
+<!--  Username or Email -->
+  <div class="mb-3">
+    <input [(ngModel)]="authRequest.usernameOrEmailAddress" type="text" class="form-control" id="username-or-email" placeholder="Email or Username">
+  </div>
+<!-- Password -->
+  <div class="mb-3">
+    <input [(ngModel)]="authRequest.password" type="password" class="form-control" id="password" placeholder="Password">
+  </div>
+  <div class="d-flex justify-content-between mb-3 w-100">
+    <button (click)="signIn()" type="button" class="btn btn-primary w-100">Sign In</button>
+  </div>
+<!--  Forgot Password && Sign Up-->
+  <div class="d-flex justify-content-between mb-3">
+    <button (click)="forgotPassword()" type="button" class="btn btn-primary">Forgot Password?</button>
+    <button (click)="singUp()" type="button" class="btn btn-primary">Sign Up</button>
+  </div>
+</div>
