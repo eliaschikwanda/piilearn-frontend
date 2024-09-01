@@ -32,3 +32,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - Copy the API specs and paste in the json file in your project
 - Use the ng-open-api-gen to generate the services (npm i ng-openapi-gen)
 - Look at the docs for more
+- To generate a component use `ng g c component-name`
+- To generate a service use `ng g s service-name`
