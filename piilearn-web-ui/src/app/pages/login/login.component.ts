@@ -5,6 +5,7 @@ import {FormsModule} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../services/services/authentication.service";
 import {TokenService} from "../../services/token/token.service";
+import {PasswordModule} from "primeng/password";
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ import {TokenService} from "../../services/token/token.service";
   imports: [
     NgIf,
     FormsModule,
-    NgFor
+    NgFor,
+    PasswordModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
