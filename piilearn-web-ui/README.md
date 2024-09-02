@@ -34,3 +34,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - Look at the docs for more
 - To generate a component use `ng g c component-name`
 - To generate a service use `ng g s service-name`
+- To create a module with routing use `ng g m module-name --routing`
+- Modules are useful for lazy loading.

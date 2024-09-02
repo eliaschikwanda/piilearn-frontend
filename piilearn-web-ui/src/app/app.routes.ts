@@ -15,5 +15,11 @@ export const routes: Routes = [
   {
     path: "accounts/activate",
     component: ActivateAccountComponent
+  },
+  {
+    path: "questions",
+    // Because questions are in a module and it's also asynchronous
+    loadChildren: () => import('./modules/question/question.module')
+      .then(module => module.QuestionModule)
   }
 ];
