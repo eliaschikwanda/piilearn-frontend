@@ -1,0 +1,17 @@
+li > a {
+  padding: 4px 5px;
+  margin: 5px 5px;
+  transition: all 0.2s ease-in-out; /* Smooth transition */
+  min-width: 110px;
+  text-align: center;
+  &:hover {
+    background-color: #d6e5f1;
+    border-radius: 40%;
+    font-weight: bold;
+  }
+  &.active {
+    font-weight: bold;
+    border-radius: 40%;
+    border-bottom: 4px solid #000; /* Bold bottom border */
+  }
+}
