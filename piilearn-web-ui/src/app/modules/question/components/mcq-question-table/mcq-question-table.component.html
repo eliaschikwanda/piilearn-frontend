@@ -25,7 +25,12 @@
   <!--  The body of the questions table  -->
   <ng-template pTemplate="body" let-mcqQuestion>
     <tr>
-      <td>{{mcqQuestion.completedByCurrentUser}}</td>
+      <td>
+        <i *ngIf="mcqQuestion.completedByCurrentUser == true; else mcqNotCompleted" class="pi pi-check-circle"></i>
+        <ng-template #mcqNotCompleted>
+          <i class="pi pi-circle"></i>
+        </ng-template>
+      </td>
       <td>
         <p>{{mcqQuestion.mcqQuestionCode}}</p>
         <app-truncate-text [text]="mcqQuestion.mcqQuestionDescription" [maxLength]="50"/>
