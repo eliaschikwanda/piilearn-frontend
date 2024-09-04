@@ -1,0 +1,35 @@
+<!--  The main table -->
+<p-table
+  [value]="mcqQuestionResponse.content ?? []"
+  [tableStyle]="{ 'min-width': '50rem' }"
+>
+  <!--    The header of the questions table  -->
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Status</th>
+      <th>Question</th>
+      <th>Season</th>
+      <th>Subject</th>
+      <th>Level</th>
+      <th>Exam Board</th>
+      <th>Attempted</th>
+      <th>Acceptance</th>
+    </tr>
+  </ng-template>
+  <!--  The body of the questions table  -->
+  <ng-template pTemplate="body" let-mcqQuestion>
+    <tr>
+      <td>{{mcqQuestion.completedByCurrentUser}}</td>
+      <td>
+        <p>{{mcqQuestion.mcqQuestionCode}}</p>
+        <app-truncate-text [text]="mcqQuestion.mcqQuestionDescription" [maxLength]="50"/>
+      </td>
+      <td>{{mcqQuestion.seasonCode}}</td>
+      <td>{{mcqQuestion.subject}}</td>
+      <td>Add Level</td>
+      <td>Add exam board</td>
+      <td>Add attempted</td>
+      <td>Add acceptance</td>
+    </tr>
+  </ng-template>
+</p-table>
