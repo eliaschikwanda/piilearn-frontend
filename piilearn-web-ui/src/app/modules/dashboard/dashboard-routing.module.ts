@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {MainComponent} from "../question/pages/main/main.component";
 import {authGuard} from "../../services/guard/auth.guard";
 import {DashboardHomeComponent} from "./pages/dashboard-home/dashboard-home.component";
+import {AddMcqQuestionComponent} from "./pages/add-mcq-question/add-mcq-question.component";
 
 const routes: Routes = [
   {
@@ -13,6 +14,11 @@ const routes: Routes = [
       {
         path: '',
         component: DashboardHomeComponent,
+        canActivate: [authGuard]
+      },
+      {
+        path: 'add-mcq-question',
+        component: AddMcqQuestionComponent,
         canActivate: [authGuard]
       }
     ]

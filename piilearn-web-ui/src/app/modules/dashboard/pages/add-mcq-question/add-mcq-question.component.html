@@ -1,1 +1,28 @@
 <p>add-mcq-question works!</p>
+<div>
+  <p-splitter
+    [style]= "{height: '500px' }"
+    styleClass="mb-10"
+    layout="vertical">
+    <!--    First panel: add question -->
+    <ng-template pTemplate>
+      <div class="col flex align-items-center justify-content-center">
+        <p>Add question</p>
+      </div>
+    </ng-template>
+
+    <!--    Second panel: add mcq options -->
+    <ng-template pTemplate>
+      <div class="col flex align-items-center justify-content-center">
+        <p>Add mcq options</p>
+      </div>
+    </ng-template>
+
+    <!--  Third panel: Add the multiple choice answer  -->
+    <ng-template pTemplate>
+      <div class="col flex align-items-center justify-content-center">
+        <p>Add the question to the mcq</p>
+      </div>
+    </ng-template>
+  </p-splitter>
+</div>

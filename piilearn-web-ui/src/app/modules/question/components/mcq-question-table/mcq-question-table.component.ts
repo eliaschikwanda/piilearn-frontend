@@ -4,7 +4,7 @@ import {PrimeTemplate} from "primeng/api";
 import {TableModule} from "primeng/table";
 import {TruncateTextComponent} from "../truncate-text/truncate-text.component";
 import {StyleClassModule} from "primeng/styleclass";
-import {NgClass} from "@angular/common";
+import {NgClass, NgIf} from "@angular/common";
 import {MultipleChoiceQuestionsService} from "../../../../services/services/multiple-choice-questions.service";
 
 @Component({
@@ -15,7 +15,8 @@ import {MultipleChoiceQuestionsService} from "../../../../services/services/mult
     TableModule,
     TruncateTextComponent,
     StyleClassModule,
-    NgClass
+    NgClass,
+    NgIf
   ],
   templateUrl: './mcq-question-table.component.html',
   styleUrl: './mcq-question-table.component.scss'
