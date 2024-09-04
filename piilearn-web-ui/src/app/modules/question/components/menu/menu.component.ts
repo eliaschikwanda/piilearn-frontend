@@ -38,7 +38,8 @@ export class MenuComponent implements OnInit{
   }
 
   signOut() {
-
+    localStorage.removeItem('token');
+    window.location.reload();
   }
 
 }
