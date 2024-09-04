@@ -1,1 +1,25 @@
-<p>add-mcq-question-panel works!</p>
+<p-panel class="mt-3">
+  <h3>Add a multiple choice options</h3>
+  <br>
+  <!-- Question Description field -->
+  <p-floatLabel>
+    <textarea
+      id="add-mcq-question-description-input"
+      rows="5"
+      cols="60"
+      pInputTextarea
+      [(ngModel)]="mcqQuestionRequest.mcqQuestionDescription">
+    </textarea>
+    <label for="add-mcq-question-description-input">Question Description</label>
+  </p-floatLabel>
+  <br>
+
+  <!-- Question Number on the original paper. -->
+  <p-floatLabel>
+    <p-inputNumber
+      id="question-number-on-original-paper"
+      [(ngModel)]="mcqQuestionRequest.mcqQuestionNumOnOriginalPaper"
+    />
+    <label for="question-number-on-original-paper">Question Number</label>
+  </p-floatLabel>
+</p-panel>
