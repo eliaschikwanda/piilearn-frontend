@@ -36,3 +36,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - To generate a service use `ng g s service-name`
 - To create a module with routing use `ng g m module-name --routing`
 - Modules are useful for lazy loading.
+- To generate the interceptor use the command `ng g interceptor http-interceptor`
