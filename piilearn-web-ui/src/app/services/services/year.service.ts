@@ -11,6 +11,8 @@ import { StrictHttpResponse } from '../strict-http-response';
 
 import { createYear } from '../fn/year/create-year';
 import { CreateYear$Params } from '../fn/year/create-year';
+import { getAllYears } from '../fn/year/get-all-years';
+import { GetAllYears$Params } from '../fn/year/get-all-years';
 import { getYearById } from '../fn/year/get-year-by-id';
 import { GetYearById$Params } from '../fn/year/get-year-by-id';
 import { YearResponse } from '../models/year-response';
@@ -19,6 +21,39 @@ import { YearResponse } from '../models/year-response';
 export class YearService extends BaseService {
   constructor(config: ApiConfiguration, http: HttpClient) {
     super(config, http);
+  }
+
+  /** Path part for operation `getAllYears()` */
+  static readonly GetAllYearsPath = '/years';
+
+  /**
+   * Get all years in the database.
+   *
+   * Get all years in the database
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getAllYears()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getAllYears$Response(params?: GetAllYears$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<YearResponse>>> {
+    return getAllYears(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * Get all years in the database.
+   *
+   * Get all years in the database
+   *
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `getAllYears$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getAllYears(params?: GetAllYears$Params, context?: HttpContext): Observable<Array<YearResponse>> {
+    return this.getAllYears$Response(params, context).pipe(
+      map((r: StrictHttpResponse<Array<YearResponse>>): Array<YearResponse> => r.body)
+    );
   }
 
   /** Path part for operation `createYear()` */

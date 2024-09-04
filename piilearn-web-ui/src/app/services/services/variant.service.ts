@@ -11,6 +11,8 @@ import { StrictHttpResponse } from '../strict-http-response';
 
 import { createVariant } from '../fn/variant/create-variant';
 import { CreateVariant$Params } from '../fn/variant/create-variant';
+import { getAllVariants } from '../fn/variant/get-all-variants';
+import { GetAllVariants$Params } from '../fn/variant/get-all-variants';
 import { getVariantById } from '../fn/variant/get-variant-by-id';
 import { GetVariantById$Params } from '../fn/variant/get-variant-by-id';
 import { VariantResponse } from '../models/variant-response';
@@ -19,6 +21,39 @@ import { VariantResponse } from '../models/variant-response';
 export class VariantService extends BaseService {
   constructor(config: ApiConfiguration, http: HttpClient) {
     super(config, http);
+  }
+
+  /** Path part for operation `getAllVariants()` */
+  static readonly GetAllVariantsPath = '/variants';
+
+  /**
+   * Get all variants in the database.
+   *
+   * Get all variants in the database
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getAllVariants()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getAllVariants$Response(params?: GetAllVariants$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<VariantResponse>>> {
+    return getAllVariants(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * Get all variants in the database.
+   *
+   * Get all variants in the database
+   *
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `getAllVariants$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getAllVariants(params?: GetAllVariants$Params, context?: HttpContext): Observable<Array<VariantResponse>> {
+    return this.getAllVariants$Response(params, context).pipe(
+      map((r: StrictHttpResponse<Array<VariantResponse>>): Array<VariantResponse> => r.body)
+    );
   }
 
   /** Path part for operation `createVariant()` */

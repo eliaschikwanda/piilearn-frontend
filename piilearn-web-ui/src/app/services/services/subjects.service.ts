@@ -19,12 +19,47 @@ import { findSubjectById } from '../fn/subjects/find-subject-by-id';
 import { FindSubjectById$Params } from '../fn/subjects/find-subject-by-id';
 import { findSubjectBySyllabusCode } from '../fn/subjects/find-subject-by-syllabus-code';
 import { FindSubjectBySyllabusCode$Params } from '../fn/subjects/find-subject-by-syllabus-code';
+import { getAllSubjects } from '../fn/subjects/get-all-subjects';
+import { GetAllSubjects$Params } from '../fn/subjects/get-all-subjects';
 import { SubjectResponse } from '../models/subject-response';
 
 @Injectable({ providedIn: 'root' })
 export class SubjectsService extends BaseService {
   constructor(config: ApiConfiguration, http: HttpClient) {
     super(config, http);
+  }
+
+  /** Path part for operation `getAllSubjects()` */
+  static readonly GetAllSubjectsPath = '/subjects';
+
+  /**
+   * Get all subjects available.
+   *
+   * Get all subjects available
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getAllSubjects()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getAllSubjects$Response(params?: GetAllSubjects$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<SubjectResponse>>> {
+    return getAllSubjects(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * Get all subjects available.
+   *
+   * Get all subjects available
+   *
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `getAllSubjects$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getAllSubjects(params?: GetAllSubjects$Params, context?: HttpContext): Observable<Array<SubjectResponse>> {
+    return this.getAllSubjects$Response(params, context).pipe(
+      map((r: StrictHttpResponse<Array<SubjectResponse>>): Array<SubjectResponse> => r.body)
+    );
   }
 
   /** Path part for operation `createSubject()` */

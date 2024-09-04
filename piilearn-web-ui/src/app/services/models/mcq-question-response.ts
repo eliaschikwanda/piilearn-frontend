@@ -4,7 +4,7 @@ export interface McqQuestionResponse {
   completedByCurrentUser?: boolean;
   examBoard?: string;
   id?: number;
-  level?: string;
+  levelCode?: string;
   mcqOptions?: {
 [key: string]: {
 [key: string]: string;

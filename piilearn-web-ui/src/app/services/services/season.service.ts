@@ -11,6 +11,8 @@ import { StrictHttpResponse } from '../strict-http-response';
 
 import { createSeason } from '../fn/season/create-season';
 import { CreateSeason$Params } from '../fn/season/create-season';
+import { getAllSeasons } from '../fn/season/get-all-seasons';
+import { GetAllSeasons$Params } from '../fn/season/get-all-seasons';
 import { getSeasonById } from '../fn/season/get-season-by-id';
 import { GetSeasonById$Params } from '../fn/season/get-season-by-id';
 import { SeasonResponse } from '../models/season-response';
@@ -19,6 +21,39 @@ import { SeasonResponse } from '../models/season-response';
 export class SeasonService extends BaseService {
   constructor(config: ApiConfiguration, http: HttpClient) {
     super(config, http);
+  }
+
+  /** Path part for operation `getAllSeasons()` */
+  static readonly GetAllSeasonsPath = '/seasons';
+
+  /**
+   * Get all seasons available.
+   *
+   * Get all seasons available
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getAllSeasons()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getAllSeasons$Response(params?: GetAllSeasons$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<SeasonResponse>>> {
+    return getAllSeasons(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * Get all seasons available.
+   *
+   * Get all seasons available
+   *
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `getAllSeasons$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getAllSeasons(params?: GetAllSeasons$Params, context?: HttpContext): Observable<Array<SeasonResponse>> {
+    return this.getAllSeasons$Response(params, context).pipe(
+      map((r: StrictHttpResponse<Array<SeasonResponse>>): Array<SeasonResponse> => r.body)
+    );
   }
 
   /** Path part for operation `createSeason()` */
