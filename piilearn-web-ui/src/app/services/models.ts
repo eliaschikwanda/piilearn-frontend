@@ -2,6 +2,7 @@
 /* eslint-disable */
 export { AuthenticationRequest } from './models/authentication-request';
 export { AuthenticationResponse } from './models/authentication-response';
+export { EditUsernameRequest } from './models/edit-username-request';
 export { EducationLevelRequest } from './models/education-level-request';
 export { ExamBoardRequest } from './models/exam-board-request';
 export { McqAddAnswerRequest } from './models/mcq-add-answer-request';
