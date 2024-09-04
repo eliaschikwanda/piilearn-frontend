@@ -6,9 +6,10 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
+import { EditUsernameRequest } from '../../models/edit-username-request';
 
 export interface AddUsernameIfAvailable$Params {
-      body: string
+      body: EditUsernameRequest
 }
 
 export function addUsernameIfAvailable(http: HttpClient, rootUrl: string, params: AddUsernameIfAvailable$Params, context?: HttpContext): Observable<StrictHttpResponse<string>> {

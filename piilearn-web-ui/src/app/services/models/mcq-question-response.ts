@@ -2,7 +2,9 @@
 /* eslint-disable */
 export interface McqQuestionResponse {
   completedByCurrentUser?: boolean;
+  examBoard?: string;
   id?: number;
+  level?: string;
   mcqOptions?: {
 [key: string]: {
 [key: string]: string;
