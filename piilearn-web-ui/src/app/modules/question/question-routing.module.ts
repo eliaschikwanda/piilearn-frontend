@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {MainComponent} from "./pages/main/main.component";
-import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 import {QuestionListComponent} from "./pages/question-list/question-list.component";
 import {authGuard} from "../../services/guard/auth.guard";
 
@@ -12,11 +11,6 @@ const routes: Routes = [
     canActivate: [authGuard],
     // To display everything in main component have a list of children
     children: [
-      {
-        path: 'dashboard',
-        component: DashboardComponent,
-        canActivate: [authGuard]
-      },
       {
         path: '',
         component: QuestionListComponent,

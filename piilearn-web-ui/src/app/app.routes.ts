@@ -25,5 +25,11 @@ export const routes: Routes = [
     loadChildren: () => import('./modules/question/question.module')
       .then(module => module.QuestionModule),
     canActivate: [authGuard]
+  },
+  {
+    path: "dashboard",
+    loadChildren: () => import('./modules/dashboard/dashboard.module')
+      .then(module => module.DashboardModule),
+    canActivate: [authGuard]
   }
 ];
