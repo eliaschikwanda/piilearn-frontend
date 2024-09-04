@@ -4,6 +4,7 @@ import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import {HTTP_INTERCEPTORS, provideHttpClient, withFetch, withInterceptorsFromDi} from "@angular/common/http";
 import {AuthInterceptor} from "./services/interceptor/auth.interceptor";
+import {provideAnimations} from "@angular/platform-browser/animations";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,6 +15,7 @@ export const appConfig: ApplicationConfig = {
       withFetch(),
       withInterceptorsFromDi() // This will include all interceptors from DI
     ),
+    provideAnimations(),
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
