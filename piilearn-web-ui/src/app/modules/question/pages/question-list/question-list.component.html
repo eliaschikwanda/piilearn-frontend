@@ -1,5 +1,5 @@
 <p>question-list works!</p>
 <p-divider/>
 <div class="d-flex justify-content-start gap-2 flex-wrap">
-  <span *ngFor="let question of mcqQuestionResponse.content">{{question.mcqQuestionDescription}}</span>
+  <app-mcq-question-table [mcqQuestionResponse]="mcqQuestionResponse"/>
 </div>

@@ -6,13 +6,19 @@ import { Router } from "@angular/router";
 import { PageResponseMcqQuestionResponse } from "../../../../services/models/page-response-mcq-question-response";
 import { NgFor } from "@angular/common";
 import { TokenService } from "../../../../services/token/token.service";
+import {TableModule} from "primeng/table";
+import {TruncateTextComponent} from "../../components/truncate-text/truncate-text.component";
+import {McqQuestionTableComponent} from "../../components/mcq-question-table/mcq-question-table.component";
 
 @Component({
   selector: 'app-question-list',
   standalone: true,
   imports: [
     DividerModule,
-    NgFor
+    NgFor,
+    TableModule,
+    TruncateTextComponent,
+    McqQuestionTableComponent
   ],
   templateUrl: './question-list.component.html',
   styleUrls: ['./question-list.component.scss']
