@@ -1,9 +1,13 @@
 <!--  The main table -->
 <p-table
   [value]="mcqQuestionResponse.content ?? []"
-  [tableStyle]="{ 'min-width': '25rem' }"
   paginator="true"
-  
+  [rows]="size"
+  [totalRecords]="mcqQuestionResponse.totalElements!"
+  [tableStyle]="{ 'min-width': '25rem' }"
+  [lazy]="true"
+  (onLazyLoad)="loadMcqQuestions($event)"
+  [rowsPerPageOptions]="[10, 50, 100]"
   styleClass="p-datatable-striped"
 >
   <!--    The header of the questions table  -->
@@ -13,13 +17,13 @@
       <th>Question</th>
       <th>Season</th>
       <th>Subject</th>
-      <th>Exam Board</th>
-      <th>Attempted</th>
+      <th>Level</th>
+      <th>ExamBoard</th>
       <th>Acceptance</th>
     </tr>
   </ng-template>
   <!--  The body of the questions table  -->
-  <ng-template pTemplate="body" let-mcqQuestion let-rowIndex="rowIndex">
+  <ng-template pTemplate="body" let-mcqQuestion>
     <tr>
       <td>{{mcqQuestion.completedByCurrentUser}}</td>
       <td>
@@ -28,8 +32,8 @@
       </td>
       <td>{{mcqQuestion.seasonCode}}</td>
       <td>{{mcqQuestion.subject}}</td>
-      <td>Add exam board</td>
-      <td>Add attempted</td>
+      <td>{{mcqQuestion.levelCode}} Level</td>
+      <td>{{mcqQuestion.examBoard}}</td>
       <td>Add acceptance</td>
     </tr>
   </ng-template>
