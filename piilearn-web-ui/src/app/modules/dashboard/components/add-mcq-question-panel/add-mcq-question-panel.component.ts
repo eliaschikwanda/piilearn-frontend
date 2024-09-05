@@ -30,7 +30,7 @@ import {
 import {CardModule} from "primeng/card";
 import {MathJaxService} from "../../../../services/mathjax/math-jax.service";
 import {MathJaxParagraphComponent} from "../math-jax-paragraph/math-jax-paragraph.component";
-import {QuestionIdSaveService} from "../../../../services/shared/questionIdSave.service";
+import {QuestionIdSaveService} from "../../../../services/shared/questIdSave/questionIdSave.service";
 
 @Component({
   selector: 'app-add-mcq-question-panel',
@@ -124,7 +124,6 @@ export class AddMcqQuestionPanelComponent implements OnInit{
           } else {
             this.errorMsg.push(err.error.error);
           }
-          console.log(err)
         }
       })
     }
