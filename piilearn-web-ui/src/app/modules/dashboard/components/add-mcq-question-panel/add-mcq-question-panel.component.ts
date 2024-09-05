@@ -22,6 +22,9 @@ import {ERROR_MESSAGES} from "../../../../../error-message";
 import {
   SelectQuestionVariantDropdownComponent
 } from "../select-question-variant-dropdown/select-question-variant-dropdown.component";
+import {
+  SelectQuestionSeasonDropdownComponent
+} from "../select-question-season-dropdown/select-question-season-dropdown.component";
 
 @Component({
   selector: 'app-add-mcq-question-panel',
@@ -37,7 +40,8 @@ import {
     ButtonModule,
     NgForOf,
     NgIf,
-    SelectQuestionVariantDropdownComponent
+    SelectQuestionVariantDropdownComponent,
+    SelectQuestionSeasonDropdownComponent
   ],
   templateUrl: './add-mcq-question-panel.component.html',
   styleUrl: './add-mcq-question-panel.component.scss'
@@ -55,7 +59,7 @@ export class AddMcqQuestionPanelComponent implements OnInit{
   }
 
   // Arrays with data to select from
-  seasons!: SeasonResponse[];
+
   examSubjects!: SubjectResponse[];
   years!: YearResponse[];
 
@@ -69,7 +73,7 @@ export class AddMcqQuestionPanelComponent implements OnInit{
   private savedQuestionId: number | undefined;
 
   constructor(
-    private seasonService: SeasonService,
+
     private subjectService: SubjectsService,
 
     private yearService: YearService,
@@ -78,17 +82,7 @@ export class AddMcqQuestionPanelComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    // Fetch the seasons
-    this.seasonService.getAllSeasons({
-      // no params
-    }).subscribe({
-      next: (seasons) => {
-        this.seasons = seasons;
-      },
-      error: (err) => {
-        this.errorMsg.push("Can not extract seasons at the moment.")
-      }
-    });
+
 
     // Fetch the subjects
     this.subjectService.getAllSubjects({
@@ -165,8 +159,12 @@ export class AddMcqQuestionPanelComponent implements OnInit{
     }
     return isValid;
   }
-
+  // Get the selected variant from the other component
   handleVariantSelected(variant: VariantResponse | undefined) {
     this.selectedVariant = variant;
+  }
+  // Get the selected season from  the other component
+  handleSeasonSelected(season: SeasonResponse | undefined) {
+    this.selectedSeason = season;
   }
 }

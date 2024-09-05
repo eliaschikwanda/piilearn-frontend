@@ -1,1 +1,20 @@
-<p>select-question-season-dropdown works!</p>
+<p-dropdown
+  [options]="seasons"
+  [(ngModel)]="selectedSeason"
+  (onChange)="onSeasonChange($event.value)"
+  optionLabel="seasonName"
+  [showClear]="true"
+  [style]="{'width':'200px'}"
+  placeholder="Season">
+  <ng-template pTemplate="selectedItem" let-selectedSeason>
+    <div class="d-flex align-items-center gap-2">
+      <div>{{selectedSeason.seasonCode}}</div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="item" let-season>
+    <div class="d-flex align-items-center gap-2">
+      <div>{{season.seasonCode}}</div>
+      <div>{{season.seasonName}}</div>
+    </div>
+  </ng-template>
+</p-dropdown>
