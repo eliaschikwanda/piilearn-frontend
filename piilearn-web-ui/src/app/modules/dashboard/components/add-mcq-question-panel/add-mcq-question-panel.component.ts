@@ -19,6 +19,9 @@ import {ButtonModule} from "primeng/button";
 import {NgForOf, NgIf} from "@angular/common";
 import {MultipleChoiceQuestionsService} from "../../../../services/services/multiple-choice-questions.service";
 import {ERROR_MESSAGES} from "../../../../../error-message";
+import {
+  SelectQuestionVariantDropdownComponent
+} from "../select-question-variant-dropdown/select-question-variant-dropdown.component";
 
 @Component({
   selector: 'app-add-mcq-question-panel',
@@ -33,7 +36,8 @@ import {ERROR_MESSAGES} from "../../../../../error-message";
     DropdownModule,
     ButtonModule,
     NgForOf,
-    NgIf
+    NgIf,
+    SelectQuestionVariantDropdownComponent
   ],
   templateUrl: './add-mcq-question-panel.component.html',
   styleUrl: './add-mcq-question-panel.component.scss'
@@ -53,7 +57,6 @@ export class AddMcqQuestionPanelComponent implements OnInit{
   // Arrays with data to select from
   seasons!: SeasonResponse[];
   examSubjects!: SubjectResponse[];
-  variants!: VariantResponse[];
   years!: YearResponse[];
 
   // Variables with selected data
@@ -68,7 +71,7 @@ export class AddMcqQuestionPanelComponent implements OnInit{
   constructor(
     private seasonService: SeasonService,
     private subjectService: SubjectsService,
-    private variantService: VariantService,
+
     private yearService: YearService,
     private mcqQuestionService: MultipleChoiceQuestionsService
   ) {
@@ -97,18 +100,6 @@ export class AddMcqQuestionPanelComponent implements OnInit{
       error: (err) => {
         this.errorMsg.push("Can not extract subjects at the moment.")
       }
-    })
-
-    // Fetch the variant
-    this.variantService.getAllVariants({
-      // no params
-    }).subscribe({
-      next: (variants) => {
-        this.variants = variants;
-      },
-    error: (err) => {
-        this.errorMsg.push("Can not extract variants at the moment.")
-    }
     })
 
     // Fetch the years
@@ -173,5 +164,9 @@ export class AddMcqQuestionPanelComponent implements OnInit{
       isValid = false;
     }
     return isValid;
+  }
+
+  handleVariantSelected(variant: VariantResponse | undefined) {
+    this.selectedVariant = variant;
   }
 }

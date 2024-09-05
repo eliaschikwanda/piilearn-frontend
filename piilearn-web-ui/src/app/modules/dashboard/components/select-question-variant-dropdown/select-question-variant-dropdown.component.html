@@ -1,1 +1,24 @@
-<p>select-question-variant-dropdown works!</p>
+<p-dropdown
+  [options]="variants"
+  [(ngModel)]="selectedVariant"
+  (onChange)="onVariantChange($event.value)"
+  optionLabel="variant"
+  [filter]="true"
+  filterBy="variant"
+  [showClear]="true"
+  [style]="{'min-width': '300px'}"
+  placeholder="Select question variant">
+  <!-- Selected Option -->
+  <ng-template pTemplate="seletedItem" let-selectedVariant>
+    <div class="d-flex align-items-center">
+      <div>{{selectedVariant.variant}}</div>
+    </div>
+  </ng-template>
+  <!-- Items -->
+  <ng-template let-variant pTemplate="item">
+    <div class="flex align-items-center gap-2">
+      <div>{{variant.variant}}</div>
+    </div>
+  </ng-template>
+
+</p-dropdown>
