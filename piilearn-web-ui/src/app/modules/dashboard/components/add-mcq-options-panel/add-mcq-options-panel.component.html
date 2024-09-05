@@ -54,11 +54,22 @@
     </div>
   </p-panel>
   <div class="ms-4">
-    <p-card
-      header="How the option will appear."
-      [style]="{'min-width': '500px'}"
-    >
-      <app-math-jax-paragraph [mathString]="optionDescription"></app-math-jax-paragraph>
-    </p-card>
+    <div class="mb-6">
+      <p-card
+        header="How the option will appear."
+        [style]="{'min-width': '500px'}"
+      >
+        <app-math-jax-paragraph [mathString]="optionDescription"></app-math-jax-paragraph>
+      </p-card>
+    </div>
+    <div class="mt-3">
+      <p-card
+        header="Options added."
+      >
+        <div *ngFor="let questionId of mcqQuestionOptionIds">
+          <p>{{mcqOptionFrontend[questionId].mcqOptionRep}} : {{mcqOptionFrontend[questionId].mcqOptionDes}}</p>
+        </div>
+      </p-card>
+    </div>
   </div>
 </div>
