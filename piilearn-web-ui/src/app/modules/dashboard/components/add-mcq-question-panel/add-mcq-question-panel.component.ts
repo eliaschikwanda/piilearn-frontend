@@ -28,6 +28,9 @@ import {
 import {
   SelectQuestionSubjectDropdownComponent
 } from "../select-question-subject-dropdown/select-question-subject-dropdown.component";
+import {
+  SelectedQuestionYearDropdownComponent
+} from "../selected-question-year-dropdown/selected-question-year-dropdown.component";
 
 @Component({
   selector: 'app-add-mcq-question-panel',
@@ -45,7 +48,8 @@ import {
     NgIf,
     SelectQuestionVariantDropdownComponent,
     SelectQuestionSeasonDropdownComponent,
-    SelectQuestionSubjectDropdownComponent
+    SelectQuestionSubjectDropdownComponent,
+    SelectedQuestionYearDropdownComponent
   ],
   templateUrl: './add-mcq-question-panel.component.html',
   styleUrl: './add-mcq-question-panel.component.scss'
@@ -65,7 +69,7 @@ export class AddMcqQuestionPanelComponent implements OnInit{
   // Arrays with data to select from
 
 
-  years!: YearResponse[];
+
 
   // Variables with selected data
   selectedSeason: SeasonResponse | undefined;
@@ -77,37 +81,18 @@ export class AddMcqQuestionPanelComponent implements OnInit{
   private savedQuestionId: number | undefined;
 
   constructor(
-
-
-
-    private yearService: YearService,
     private mcqQuestionService: MultipleChoiceQuestionsService
   ) {
   }
 
   ngOnInit(): void {
 
-
-
-
-    // Fetch the years
-    this.yearService.getAllYears({
-      // no params
-    }).subscribe({
-      next: (years) => {
-        this.years = years;
-      },
-      error: (err) => {
-        this.errorMsg.push("Can not extract years at the moment.")
-      }
-    });
-
-
   }
 
   saveQuestion() {
     this.errorMsg = [];
     if (this.inputIsValid()) {
+      console.log(this.mcqQuestionRequest);
       this.mcqQuestionService.createMcqQuestion({
         body: this.mcqQuestionRequest
       }).subscribe({
@@ -164,5 +149,9 @@ export class AddMcqQuestionPanelComponent implements OnInit{
   // Get the selected subject from the subject dropdown component
   handleSubjectSelected(subject: SubjectResponse | undefined) {
     this.selectedSubject = subject;
+  }
+  // Get the selected year from the year dropdown component
+  handleYearSelected(year: YearResponse | undefined) {
+    this.selectedYear = year;
   }
 }

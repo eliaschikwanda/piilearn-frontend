@@ -1,0 +1,19 @@
+<p-dropdown
+  [options]="years"
+  [(ngModel)]="selectedYear"
+  (onChange)="onChangeYear($event.value)"
+  optionLabel="year"
+  [showClear]="true"
+  [style]="{'width':'200px'}"
+  placeholder="Select Year">
+  <ng-template pTemplate="selectedItem" let-selectedYear>
+    <div class="d-flex align-items-center gap-2">
+      <div>{{selectedYear.year}}</div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="item" let-year>
+    <div class="d-flex align-items-center gap-2">
+      <div>{{year.year}}</div>
+    </div>
+  </ng-template>
+</p-dropdown>

@@ -34,24 +34,7 @@
 
   <div class="d-flex justify-content-between mb-3">
     <!-- Year -->
-    <p-dropdown
-      [options]="years"
-      [(ngModel)]="selectedYear"
-      optionLabel="year"
-      [showClear]="true"
-      [style]="{'width':'200px'}"
-      placeholder="Select Year">
-      <ng-template pTemplate="selectedItem" let-selectedYear>
-        <div class="d-flex align-items-center gap-2">
-          <div>{{selectedYear.year}}</div>
-        </div>
-      </ng-template>
-      <ng-template pTemplate="item" let-year>
-        <div class="d-flex align-items-center gap-2">
-          <div>{{year.year}}</div>
-        </div>
-      </ng-template>
-    </p-dropdown>
+    <app-selected-question-year-dropdown (yearSelected)="handleYearSelected($event)"/>
     <button
       type="submit"
       (click)="saveQuestion()"
