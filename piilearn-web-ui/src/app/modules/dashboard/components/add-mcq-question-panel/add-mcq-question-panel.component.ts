@@ -66,11 +66,6 @@ export class AddMcqQuestionPanelComponent implements OnInit{
     yearId: 0
   }
 
-  // Arrays with data to select from
-
-
-
-
   // Variables with selected data
   selectedSeason: SeasonResponse | undefined;
   selectedSubject: SubjectResponse | undefined;
@@ -86,13 +81,31 @@ export class AddMcqQuestionPanelComponent implements OnInit{
   }
 
   ngOnInit(): void {
+  }
 
+  // Get the selected variant from variant dropdown component
+  handleVariantSelected(variant: VariantResponse | undefined) {
+    this.selectedVariant = variant;
+  }
+  // Get the selected season from season dropdown component
+  handleSeasonSelected(season: SeasonResponse | undefined) {
+    this.selectedSeason = season;
+  }
+  // Get the selected subject from the subject dropdown component
+  handleSubjectSelected(subject: SubjectResponse | undefined) {
+    this.selectedSubject = subject;
+  }
+  // Get the selected year from the year dropdown component
+  handleYearSelected(year: YearResponse | undefined) {
+    this.selectedYear = year;
   }
 
   saveQuestion() {
     this.errorMsg = [];
     if (this.inputIsValid()) {
-      console.log(this.mcqQuestionRequest);
+      // Attach the id to the mcqQuestionRequest
+      this.addIdsToMcqRequest();
+      // Create the question
       this.mcqQuestionService.createMcqQuestion({
         body: this.mcqQuestionRequest
       }).subscribe({
@@ -138,20 +151,12 @@ export class AddMcqQuestionPanelComponent implements OnInit{
     }
     return isValid;
   }
-  // Get the selected variant from variant dropdown component
-  handleVariantSelected(variant: VariantResponse | undefined) {
-    this.selectedVariant = variant;
-  }
-  // Get the selected season from season dropdown component
-  handleSeasonSelected(season: SeasonResponse | undefined) {
-    this.selectedSeason = season;
-  }
-  // Get the selected subject from the subject dropdown component
-  handleSubjectSelected(subject: SubjectResponse | undefined) {
-    this.selectedSubject = subject;
-  }
-  // Get the selected year from the year dropdown component
-  handleYearSelected(year: YearResponse | undefined) {
-    this.selectedYear = year;
+
+  private addIdsToMcqRequest() {
+    // Assign default value of 0 if selectedSeason is null or undefined
+    this.mcqQuestionRequest.seasonId = this.selectedSeason?.id ?? 0;
+    this.mcqQuestionRequest.yearId = this.selectedYear?.id ?? 0;
+    this.mcqQuestionRequest.variantId = this.selectedVariant?.id ?? 0;
+    this.mcqQuestionRequest.subjectId = this.selectedSubject?.id?? 0;
   }
 }
