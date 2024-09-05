@@ -15,7 +15,6 @@ import {VariantResponse} from "../../../../services/models/variant-response";
   styleUrl: './select-question-variant-dropdown.component.scss'
 })
 export class SelectQuestionVariantDropdownComponent implements OnInit{
-  errorMsg: string[] = [];
   variants!: VariantResponse[];
   selectedVariant: VariantResponse | undefined;
   @Output() variantSelected = new EventEmitter<VariantResponse | undefined>();
@@ -24,7 +23,6 @@ export class SelectQuestionVariantDropdownComponent implements OnInit{
   constructor(
     private variantService: VariantService,
   ) {
-
   }
 
   // Whenever there is a change in the field update the value
@@ -43,7 +41,7 @@ export class SelectQuestionVariantDropdownComponent implements OnInit{
         this.variants = variants;
       },
       error: (err) => {
-        this.errorMsg.push("Can not extract variants at the moment.")
+        console.log(err);
       }
     })
   }
