@@ -1,5 +1,124 @@
-<p-panel class="mt-3">
-  <h3>Add a multiple choice options</h3>
+<p-panel
+  header="Add a multiple choice question"
+>
+  <!-- Display any error messages if any -->
+  <ng-template [ngIf]="errorMsg.length != 0">
+    <div class="alert alert-danger mb-3" role="alert">
+      <p *ngFor="let msg of errorMsg">{{msg}}</p>
+    </div>
+    <br>
+  </ng-template>
+
+  <div class="d-flex justify-content-between mb-3 mt-3">
+    <!-- Question Number on the original paper field -->
+    <p-floatLabel>
+      <p-inputNumber
+        id="question-number-on-original-paper"
+        [(ngModel)]="mcqQuestionRequest.mcqQuestionNumOnOriginalPaper"
+        [style]="{'width': '200px'}"
+      />
+      <label for="question-number-on-original-paper">Question Number</label>
+    </p-floatLabel>
+    <!--  Variant  -->
+    <p-dropdown
+      [options]="variants"
+      [(ngModel)]="selectedVariant"
+      optionLabel="variant"
+      [filter]="true"
+      filterBy="variant"
+      [showClear]="true"
+      [style]="{'min-width': '300px'}"
+      placeholder="Select question variant">
+      <!-- Selected Option -->
+      <ng-template pTemplate="seletedItem" let-selectedVariant>
+        <div class="d-flex align-items-center">
+          <div>{{selectedVariant.variant}}</div>
+        </div>
+      </ng-template>
+      <!-- Items -->
+      <ng-template let-variant pTemplate="item">
+        <div class="flex align-items-center gap-2">
+          <div>{{variant.variant}}</div>
+        </div>
+      </ng-template>
+
+    </p-dropdown>
+  </div>
+  <br>
+
+  <div class="d-flex justify-content-between mb-3">
+    <!-- Season -->
+    <p-dropdown
+      [options]="seasons"
+      [(ngModel)]="selectedSeason"
+      optionLabel="seasonName"
+      [showClear]="true"
+      [style]="{'width':'200px'}"
+      placeholder="Season">
+      <ng-template pTemplate="selectedItem" let-selectedSeason>
+        <div class="d-flex align-items-center gap-2">
+          <div>{{selectedSeason.seasonCode}}</div>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="item" let-season>
+        <div class="d-flex align-items-center gap-2">
+          <div>{{season.seasonCode}}</div>
+          <div>{{season.seasonName}}</div>
+        </div>
+      </ng-template>
+    </p-dropdown>
+    <!-- Subject -->
+    <p-dropdown
+      [options]="examSubjects"
+      [(ngModel)]="selectedSubject"
+      optionLabel="subjectName"
+      [showClear]="true"
+      [filter]="true"
+      filterBy="subjectName"
+      [style]="{'width':'300px'}"
+      placeholder="Select Subject">
+      <ng-template pTemplate="selectedItem" let-selectedSubject>
+        <div class="d-flex align-items-center gap-2">
+          <div>{{selectedSubject.subjectName}}</div>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="item" let-subject>
+        <div class="d-flex align-items-center gap-2">
+          <div>{{subject.syllabusSubjectCode}}</div>
+          <div>{{subject.subjectName}}</div>
+        </div>
+      </ng-template>
+    </p-dropdown>
+  </div>
+  <br>
+
+  <div class="d-flex justify-content-between mb-3">
+    <!-- Year -->
+    <p-dropdown
+      [options]="years"
+      [(ngModel)]="selectedYear"
+      optionLabel="year"
+      [showClear]="true"
+      [style]="{'width':'200px'}"
+      placeholder="Select Year">
+      <ng-template pTemplate="selectedItem" let-selectedYear>
+        <div class="d-flex align-items-center gap-2">
+          <div>{{selectedYear.year}}</div>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="item" let-year>
+        <div class="d-flex align-items-center gap-2">
+          <div>{{year.year}}</div>
+        </div>
+      </ng-template>
+    </p-dropdown>
+    <button
+      type="submit"
+      (click)="saveQuestion()"
+      class="btn btn-secondary shadow-lg">
+      Save Question
+    </button>
+  </div>
   <br>
   <!-- Question Description field -->
   <p-floatLabel>
@@ -11,15 +130,5 @@
       [(ngModel)]="mcqQuestionRequest.mcqQuestionDescription">
     </textarea>
     <label for="add-mcq-question-description-input">Question Description</label>
-  </p-floatLabel>
-  <br>
-
-  <!-- Question Number on the original paper. -->
-  <p-floatLabel>
-    <p-inputNumber
-      id="question-number-on-original-paper"
-      [(ngModel)]="mcqQuestionRequest.mcqQuestionNumOnOriginalPaper"
-    />
-    <label for="question-number-on-original-paper">Question Number</label>
   </p-floatLabel>
 </p-panel>
