@@ -1,57 +1,70 @@
-<p-panel
-  header="Add a multiple choice question"
->
-  <!-- Display any error messages if any -->
-  <ng-template [ngIf]="errorMsg.length != 0">
-    <div class="alert alert-danger mb-3" role="alert">
-      <p *ngFor="let msg of errorMsg">{{msg}}</p>
+
+<div class="d-flex justify-content-between mb-3 mt-3">
+  <p-panel
+    header="Add a multiple choice question"
+    class="me-4"
+  >
+    <!-- Display any error messages if any -->
+    <ng-template [ngIf]="errorMsg.length != 0">
+      <div class="alert alert-danger mb-3" role="alert">
+        <p *ngFor="let msg of errorMsg">{{msg}}</p>
+      </div>
+      <br>
+    </ng-template>
+
+    <div class="d-flex justify-content-between mb-3 mt-3">
+      <!-- Question Number on the original paper field -->
+      <p-floatLabel>
+        <p-inputNumber
+          id="question-number-on-original-paper"
+          [(ngModel)]="mcqQuestionRequest.mcqQuestionNumOnOriginalPaper"
+          [style]="{'width': '200px'}"
+        />
+        <label for="question-number-on-original-paper">Question Number</label>
+      </p-floatLabel>
+      <!--  Variant  -->
+      <app-select-question-variant-dropdown (variantSelected)="handleVariantSelected($event)" />
     </div>
     <br>
-  </ng-template>
 
-  <div class="d-flex justify-content-between mb-3 mt-3">
-    <!-- Question Number on the original paper field -->
+    <div class="d-flex justify-content-between mb-3">
+      <!-- Season -->
+      <app-select-question-season-dropdown (seasonSelected)="handleSeasonSelected($event)"/>
+      <!-- Subject -->
+      <app-select-question-subject-dropdown (subjectSelected)="handleSubjectSelected($event)"/>
+    </div>
+    <br>
+
+    <div class="d-flex justify-content-between mb-3">
+      <!-- Year -->
+      <app-selected-question-year-dropdown (yearSelected)="handleYearSelected($event)"/>
+      <button
+        type="submit"
+        (click)="saveQuestion()"
+        class="btn btn-secondary shadow-lg">
+        Save Question
+      </button>
+    </div>
+    <br>
+    <!-- Question Description field -->
     <p-floatLabel>
-      <p-inputNumber
-        id="question-number-on-original-paper"
-        [(ngModel)]="mcqQuestionRequest.mcqQuestionNumOnOriginalPaper"
-        [style]="{'width': '200px'}"
-      />
-      <label for="question-number-on-original-paper">Question Number</label>
+      <textarea
+        id="add-mcq-question-description-input"
+        rows="5"
+        cols="60"
+        (ngModelChange)="onQuestionDescriptionChange($event)"
+        pInputTextarea
+        [(ngModel)]="mcqQuestionRequest.mcqQuestionDescription">
+      </textarea>
+      <label for="add-mcq-question-description-input">Question Description</label>
     </p-floatLabel>
-    <!--  Variant  -->
-    <app-select-question-variant-dropdown (variantSelected)="handleVariantSelected($event)" />
+  </p-panel>
+  <div class="ms-4">
+    <p-card
+      header="How the question will appear."
+      [style]="{'min-width': '500px'}"
+    >
+      <app-math-jax-paragraph [mathString]="questionDescription"></app-math-jax-paragraph>
+    </p-card>
   </div>
-  <br>
-
-  <div class="d-flex justify-content-between mb-3">
-    <!-- Season -->
-    <app-select-question-season-dropdown (seasonSelected)="handleSeasonSelected($event)"/>
-    <!-- Subject -->
-    <app-select-question-subject-dropdown (subjectSelected)="handleSubjectSelected($event)"/>
-  </div>
-  <br>
-
-  <div class="d-flex justify-content-between mb-3">
-    <!-- Year -->
-    <app-selected-question-year-dropdown (yearSelected)="handleYearSelected($event)"/>
-    <button
-      type="submit"
-      (click)="saveQuestion()"
-      class="btn btn-secondary shadow-lg">
-      Save Question
-    </button>
-  </div>
-  <br>
-  <!-- Question Description field -->
-  <p-floatLabel>
-    <textarea
-      id="add-mcq-question-description-input"
-      rows="5"
-      cols="60"
-      pInputTextarea
-      [(ngModel)]="mcqQuestionRequest.mcqQuestionDescription">
-    </textarea>
-    <label for="add-mcq-question-description-input">Question Description</label>
-  </p-floatLabel>
-</p-panel>
+</div>

@@ -10,10 +10,6 @@ import {SubjectResponse} from "../../../../services/models/subject-response";
 import {VariantResponse} from "../../../../services/models/variant-response";
 import {SeasonResponse} from "../../../../services/models/season-response";
 import {YearResponse} from "../../../../services/models/year-response";
-import {YearService} from "../../../../services/services/year.service";
-import {SeasonService} from "../../../../services/services/season.service";
-import {SubjectsService} from "../../../../services/services/subjects.service";
-import {VariantService} from "../../../../services/services/variant.service";
 import {DropdownModule} from "primeng/dropdown";
 import {ButtonModule} from "primeng/button";
 import {NgForOf, NgIf} from "@angular/common";
@@ -31,6 +27,9 @@ import {
 import {
   SelectedQuestionYearDropdownComponent
 } from "../selected-question-year-dropdown/selected-question-year-dropdown.component";
+import {CardModule} from "primeng/card";
+import {MathJaxService} from "../../../../services/mathjax/math-jax.service";
+import {MathJaxParagraphComponent} from "../math-jax-paragraph/math-jax-paragraph.component";
 
 @Component({
   selector: 'app-add-mcq-question-panel',
@@ -49,12 +48,15 @@ import {
     SelectQuestionVariantDropdownComponent,
     SelectQuestionSeasonDropdownComponent,
     SelectQuestionSubjectDropdownComponent,
-    SelectedQuestionYearDropdownComponent
+    SelectedQuestionYearDropdownComponent,
+    CardModule,
+    MathJaxParagraphComponent
   ],
   templateUrl: './add-mcq-question-panel.component.html',
   styleUrl: './add-mcq-question-panel.component.scss'
 })
 export class AddMcqQuestionPanelComponent implements OnInit{
+  // MathJX -->
   errorMsg: string[] = [];
   mcqQuestionRequest: McqQuestionRequest = {
     id: 0,
@@ -74,9 +76,11 @@ export class AddMcqQuestionPanelComponent implements OnInit{
 
   // SavedEntities
   private savedQuestionId: number | undefined;
+  public questionDescription: string = "Testing with a random equation \\(x^2 + y^2 = z^2\\)";
 
   constructor(
-    private mcqQuestionService: MultipleChoiceQuestionsService
+    private mcqQuestionService: MultipleChoiceQuestionsService,
+    private mathJaxService: MathJaxService
   ) {
   }
 
@@ -158,5 +162,9 @@ export class AddMcqQuestionPanelComponent implements OnInit{
     this.mcqQuestionRequest.yearId = this.selectedYear?.id ?? 0;
     this.mcqQuestionRequest.variantId = this.selectedVariant?.id ?? 0;
     this.mcqQuestionRequest.subjectId = this.selectedSubject?.id?? 0;
+  }
+
+  onQuestionDescriptionChange(questionDescription: string) {
+    this.questionDescription = questionDescription;
   }
 }
