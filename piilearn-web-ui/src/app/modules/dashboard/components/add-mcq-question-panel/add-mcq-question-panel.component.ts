@@ -30,6 +30,7 @@ import {
 import {CardModule} from "primeng/card";
 import {MathJaxService} from "../../../../services/mathjax/math-jax.service";
 import {MathJaxParagraphComponent} from "../math-jax-paragraph/math-jax-paragraph.component";
+import {QuestionIdSaveService} from "../../../../services/shared/questionIdSave.service";
 
 @Component({
   selector: 'app-add-mcq-question-panel',
@@ -75,12 +76,11 @@ export class AddMcqQuestionPanelComponent implements OnInit{
   selectedYear: YearResponse | undefined;
 
   // SavedEntities
-  private savedQuestionId: number | undefined;
   public questionDescription: string = "CaCO\\(_3\\)(s) + 2HCl(aq) → CaCl\\(_2\\)(aq) + CO\\(_2\\)(g) + H\\(_2\\)O(l)";
 
   constructor(
     private mcqQuestionService: MultipleChoiceQuestionsService,
-    private mathJaxService: MathJaxService
+    private questionIdSave: QuestionIdSaveService
   ) {
   }
 
@@ -114,7 +114,7 @@ export class AddMcqQuestionPanelComponent implements OnInit{
         body: this.mcqQuestionRequest
       }).subscribe({
         next: (res) => {
-          this.savedQuestionId = res;
+          this.questionIdSave.setSavedQuestionId(res);
         },
         error: (err) => {
           if (err.error.validationErrors) {
