@@ -25,6 +25,9 @@ import {
 import {
   SelectQuestionSeasonDropdownComponent
 } from "../select-question-season-dropdown/select-question-season-dropdown.component";
+import {
+  SelectQuestionSubjectDropdownComponent
+} from "../select-question-subject-dropdown/select-question-subject-dropdown.component";
 
 @Component({
   selector: 'app-add-mcq-question-panel',
@@ -41,7 +44,8 @@ import {
     NgForOf,
     NgIf,
     SelectQuestionVariantDropdownComponent,
-    SelectQuestionSeasonDropdownComponent
+    SelectQuestionSeasonDropdownComponent,
+    SelectQuestionSubjectDropdownComponent
   ],
   templateUrl: './add-mcq-question-panel.component.html',
   styleUrl: './add-mcq-question-panel.component.scss'
@@ -60,7 +64,7 @@ export class AddMcqQuestionPanelComponent implements OnInit{
 
   // Arrays with data to select from
 
-  examSubjects!: SubjectResponse[];
+
   years!: YearResponse[];
 
   // Variables with selected data
@@ -74,7 +78,7 @@ export class AddMcqQuestionPanelComponent implements OnInit{
 
   constructor(
 
-    private subjectService: SubjectsService,
+
 
     private yearService: YearService,
     private mcqQuestionService: MultipleChoiceQuestionsService
@@ -84,17 +88,7 @@ export class AddMcqQuestionPanelComponent implements OnInit{
   ngOnInit(): void {
 
 
-    // Fetch the subjects
-    this.subjectService.getAllSubjects({
-      // no params
-    }).subscribe({
-      next: (subjects) => {
-        this.examSubjects = subjects;
-      },
-      error: (err) => {
-        this.errorMsg.push("Can not extract subjects at the moment.")
-      }
-    })
+
 
     // Fetch the years
     this.yearService.getAllYears({
@@ -159,12 +153,16 @@ export class AddMcqQuestionPanelComponent implements OnInit{
     }
     return isValid;
   }
-  // Get the selected variant from the other component
+  // Get the selected variant from variant dropdown component
   handleVariantSelected(variant: VariantResponse | undefined) {
     this.selectedVariant = variant;
   }
-  // Get the selected season from  the other component
+  // Get the selected season from season dropdown component
   handleSeasonSelected(season: SeasonResponse | undefined) {
     this.selectedSeason = season;
+  }
+  // Get the selected subject from the subject dropdown component
+  handleSubjectSelected(subject: SubjectResponse | undefined) {
+    this.selectedSubject = subject;
   }
 }

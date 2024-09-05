@@ -1,0 +1,22 @@
+<p-dropdown
+  [options]="examSubjects"
+  [(ngModel)]="selectedSubject"
+  (onChange)="onSubjectChange($event.value)"
+  optionLabel="subjectName"
+  [showClear]="true"
+  [filter]="true"
+  filterBy="subjectName"
+  [style]="{'width':'300px'}"
+  placeholder="Select Subject">
+  <ng-template pTemplate="selectedItem" let-selectedSubject>
+    <div class="d-flex align-items-center gap-2">
+      <div>{{selectedSubject.subjectName}}</div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="item" let-subject>
+    <div class="d-flex align-items-center gap-2">
+      <div>{{subject.syllabusSubjectCode}}</div>
+      <div>{{subject.subjectName}}</div>
+    </div>
+  </ng-template>
+</p-dropdown>
