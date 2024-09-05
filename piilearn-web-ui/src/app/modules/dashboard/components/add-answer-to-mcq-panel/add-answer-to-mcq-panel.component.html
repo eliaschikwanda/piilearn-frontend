@@ -1,6 +1,40 @@
-<div class="mt-3">
-  <h4>Add a mcq questions.</h4>
-</div>
-<div>
+<div class="d-flex justify-content-between mb-3 mt-3">
+  <p-panel
+    header="Save the question"
+  >
+    <!-- Display any error messages if any -->
+    <ng-template [ngIf]="errorMsg.length != 0">
+      <div class="alert alert-danger mb-3" role="alert">
+        <p *ngFor="let msg of errorMsg">{{msg}}</p>
+      </div>
+      <br>
+    </ng-template>
 
+    <div>
+      <!--  Mcq Question id    -->
+      <p-floatLabel>
+        <p-inputNumber
+          id="mcq-question-id-add-answer"
+          [style]="{'width':'100%'}"
+          [(ngModel)]="mcqAddAnswerRequest.questionId"/>
+        <label for="mcq-question-id-add-answer">Mcq Question Id</label>
+      </p-floatLabel>
+      <br>
+      <!-- Mcq Option id    -->
+      <p-floatLabel>
+        <p-inputNumber
+          id="mcq-option-id-add-answer"
+          [style]="{'width':'100%'}"
+          [(ngModel)]="mcqAddAnswerRequest.mcqOptionId"/>
+        <label for="mcq-option-id-add-answer">Mcq Option Id</label>
+      </p-floatLabel>
+    </div>
+    <br>
+    <!-- Save answer -->
+    <div>
+      <button type="submit" (click)="saveMcqAnswer()" class="btn btn-secondary shadow-lg">
+        Save Answer
+      </button>
+    </div>
+  </p-panel>
 </div>

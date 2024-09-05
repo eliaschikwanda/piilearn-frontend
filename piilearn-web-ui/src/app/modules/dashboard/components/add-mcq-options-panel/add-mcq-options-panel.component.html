@@ -67,7 +67,7 @@
         header="Options added."
       >
         <div *ngFor="let questionId of mcqQuestionOptionIds">
-          <p>{{mcqOptionFrontend[questionId].mcqOptionRep}} : {{mcqOptionFrontend[questionId].mcqOptionDes}}</p>
+          <p>{{mcqOptionFrontend[questionId].mcqOptionRep}} : {{mcqOptionFrontend[questionId].mcqOptionDes}} ({{questionId}})</p>
         </div>
       </p-card>
     </div>
