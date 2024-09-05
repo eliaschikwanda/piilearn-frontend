@@ -76,7 +76,7 @@ export class AddMcqQuestionPanelComponent implements OnInit{
 
   // SavedEntities
   private savedQuestionId: number | undefined;
-  public questionDescription: string = "Testing with a random equation \\(x^2 + y^2 = z^2\\)";
+  public questionDescription: string = "CaCO\\(_3\\)(s) + 2HCl(aq) → CaCl\\(_2\\)(aq) + CO\\(_2\\)(g) + H\\(_2\\)O(l)";
 
   constructor(
     private mcqQuestionService: MultipleChoiceQuestionsService,

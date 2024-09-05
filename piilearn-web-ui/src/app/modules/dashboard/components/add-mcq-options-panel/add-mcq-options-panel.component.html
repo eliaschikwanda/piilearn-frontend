@@ -1,1 +1,64 @@
-<p>anser works</p>
+<div class="d-flex justify-content-between mb-3 mt-3">
+  <p-panel
+    header="Add mcq options."
+    class="me-4"
+  >
+    <!-- Display any error messages if any -->
+    <ng-template [ngIf]="errorMsg.length != 0">
+      <div class="alert alert-danger mb-3" role="alert">
+        <p *ngFor="let msg of errorMsg">{{msg}}</p>
+      </div>
+      <br>
+    </ng-template>
+
+    <div class="d-flex justify-content-between mb-3 mt-3">
+    <!-- Question Id -->
+      <p-floatLabel class="flex-grow-1 me-3">
+        <p-inputNumber
+          inputId="integeronly"
+          id="mcq-option-id"
+          [style]="{'width': '100%'}"
+          [(ngModel)]="mcqOptionRequest.mcqQuestionId"/>
+          <label for="mcq-option-id">Mcq Question Id</label>
+      </p-floatLabel>
+    <!-- Option Rep -->
+      <p-floatLabel class="flex-grow-1 me-3">
+        <input
+          maxlength="1"
+          id="mcq-option-rep-id"
+          [style]="{'width': '100%'}"
+          [(ngModel)]="mcqOptionRequest.optionRep"
+          pInputText/>
+        <label for="mcq-option-rep-id">A, B, C or D</label>
+      </p-floatLabel>
+    </div>
+
+    <br>
+    <!-- Mcq Option Description   -->
+    <p-floatLabel class="flex-grow-1 me-3">
+      <textarea
+        id="mcq-option-description"
+        rows="5" cols="30"
+        [style]="{'width' : '100%'}"
+        (ngModelChange)="onQuestionOptionChange($event)"
+        [(ngModel)]="mcqOptionRequest.optionDescription"
+        pInputTextarea>
+      </textarea>
+      <label for="mcq-option-description">Mcq Option Description</label>
+    </p-floatLabel>
+
+    <div class="d-flex justify-content-center align-items-center">
+      <button type="submit" (click)="saveOption()" class="btn btn-secondary shadow-lg">
+        Save Option
+      </button>
+    </div>
+  </p-panel>
+  <div class="ms-4">
+    <p-card
+      header="How the option will appear."
+      [style]="{'min-width': '500px'}"
+    >
+      <app-math-jax-paragraph [mathString]="optionDescription"></app-math-jax-paragraph>
+    </p-card>
+  </div>
+</div>
