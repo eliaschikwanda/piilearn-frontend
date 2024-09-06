@@ -1,3 +1,21 @@
-.custom-button {
-  border-radius: 50px !important;
+@media (max-width: 991.98px) {
+  #mcq-option-details .row > div {
+    width: 100%;
+  }
+}
+
+#mcq-option-details .p-panel,
+#mcq-option-details .p-card {
+  height: 100%;
+}
+
+#mcq-option-details .p-panel .p-panel-content,
+#mcq-option-details .p-card .p-card-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#mcq-option-details .p-inputtextarea {
+  flex-grow: 1;
 }
