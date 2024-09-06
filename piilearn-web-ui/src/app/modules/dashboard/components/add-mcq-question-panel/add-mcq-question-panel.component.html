@@ -1,70 +1,82 @@
+<div id="add-mcq-question-addition-details" class="container-fluid py-3">
+  <div class="row justify-content-center">
+    <div id="add-mcq-question-add-form" class="mb-3 col-lg-6 mb-lg-0">
+      <p-panel header="Add mcq question." class="h-100">
+        <!-- Display any error messages if any -->
+        <ng-template [ngIf]="errorMsg.length != 0">
+          <div class="alert alert-danger mb-3" role="alert">
+            <p *ngFor="let msg of errorMsg">{{msg}}</p>
+          </div>
+          <br>
+        </ng-template>
 
-<div class="d-flex justify-content-between mb-3 mt-3">
-  <p-panel
-    header="Add mcq question."
-    class="me-4"
-  >
-    <!-- Display any error messages if any -->
-    <ng-template [ngIf]="errorMsg.length != 0">
-      <div class="alert alert-danger mb-3" role="alert">
-        <p *ngFor="let msg of errorMsg">{{msg}}</p>
+        <!--  Question No and Variant -->
+        <div class="row h-100 mb-4">
+          <!-- Question Number on the original paper field -->
+          <div class="col-6">
+            <p-floatLabel>
+              <p-inputNumber id="question-number-on-original-paper"
+                             [style]="{'width':'100%'}"
+                             [(ngModel)]="mcqQuestionRequest.mcqQuestionNumOnOriginalPaper"/>
+              <label for="question-number-on-original-paper">Question No.</label>
+            </p-floatLabel>
+          </div>
+          <!-- Variant -->
+          <div class="col-6">
+            <app-select-question-variant-dropdown class="me-5" (variantSelected)="handleVariantSelected($event)"/>
+          </div>
+        </div>
+
+        <!--  Season and Subject   -->
+        <div class="row h-100 mb-4">
+          <!-- Season -->
+          <div class="col-6">
+            <app-select-question-subject-dropdown (subjectSelected)="handleSubjectSelected($event)"/>
+          </div>
+          <!-- Subject -->
+          <div class="col-6">
+            <app-select-question-season-dropdown (seasonSelected)="handleSeasonSelected($event)"/>
+          </div>
+
+        </div>
+
+        <!-- Year and Save button -->
+        <div class="row h-100 mb-4">
+          <!-- Year -->
+          <div class="col-6">
+            <app-selected-question-year-dropdown (yearSelected)="handleYearSelected($event)"/>
+          </div>
+          <!-- Save Button -->
+          <div class="d-flex justify-content-center col-6">
+            <button type="submit" (click)="saveQuestion()" class="btn btn-secondary shadow-lg">
+              Save Question
+            </button>
+          </div>
+        </div>
+
+        <!-- Question Description field -->
+        <div class="row h-100 col-12">
+          <p-floatLabel>
+            <textarea
+              id="add-mcq-question-description-input"
+              rows="5"
+              style="width: 100%;"
+              (ngModelChange)="onQuestionDescriptionChange($event)"
+              pInputTextarea
+              [(ngModel)]="mcqQuestionRequest.mcqQuestionDescription">
+            </textarea>
+            <label for="add-mcq-question-description-input">Question Description</label>
+          </p-floatLabel>
+        </div>
+      </p-panel>
+    </div>
+    <div id="view-question-panel" class="col-lg-6 mb-3 mb-lg-0">
+      <div class="row h-100">
+        <p-card header="How the question will appear."
+          [style]="{'width': '100%'}">
+          <app-math-jax-paragraph [mathString]="questionDescription"></app-math-jax-paragraph>
+        </p-card>
       </div>
-      <br>
-    </ng-template>
-
-    <div class="d-flex justify-content-between mb-3 mt-3">
-      <!-- Question Number on the original paper field -->
-      <p-floatLabel>
-        <p-inputNumber
-          id="question-number-on-original-paper"
-          [(ngModel)]="mcqQuestionRequest.mcqQuestionNumOnOriginalPaper"
-          [style]="{'width': '200px'}"
-        />
-        <label for="question-number-on-original-paper">Question Number</label>
-      </p-floatLabel>
-      <!--  Variant  -->
-      <app-select-question-variant-dropdown (variantSelected)="handleVariantSelected($event)" />
     </div>
-    <br>
-
-    <div class="d-flex justify-content-between mb-3">
-      <!-- Season -->
-      <app-select-question-season-dropdown (seasonSelected)="handleSeasonSelected($event)"/>
-      <!-- Subject -->
-      <app-select-question-subject-dropdown (subjectSelected)="handleSubjectSelected($event)"/>
-    </div>
-    <br>
-
-    <div class="d-flex justify-content-between mb-3">
-      <!-- Year -->
-      <app-selected-question-year-dropdown (yearSelected)="handleYearSelected($event)"/>
-      <button
-        type="submit"
-        (click)="saveQuestion()"
-        class="btn btn-secondary shadow-lg">
-        Save Question
-      </button>
-    </div>
-    <br>
-    <!-- Question Description field -->
-    <p-floatLabel>
-      <textarea
-        id="add-mcq-question-description-input"
-        rows="5"
-        cols="60"
-        (ngModelChange)="onQuestionDescriptionChange($event)"
-        pInputTextarea
-        [(ngModel)]="mcqQuestionRequest.mcqQuestionDescription">
-      </textarea>
-      <label for="add-mcq-question-description-input">Question Description</label>
-    </p-floatLabel>
-  </p-panel>
-  <div class="ms-4">
-    <p-card
-      header="How the question will appear."
-      [style]="{'min-width': '500px'}"
-    >
-      <app-math-jax-paragraph [mathString]="questionDescription"></app-math-jax-paragraph>
-    </p-card>
   </div>
 </div>

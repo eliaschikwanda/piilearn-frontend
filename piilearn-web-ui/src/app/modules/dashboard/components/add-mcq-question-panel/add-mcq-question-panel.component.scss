@@ -1,3 +1,7 @@
 .custom-button {
   border-radius: 50px !important;
 }
+
+p-inputNumber, .app-select-question-variant-dropdown {
+  width: 100% !important; /* Force full width */
+}

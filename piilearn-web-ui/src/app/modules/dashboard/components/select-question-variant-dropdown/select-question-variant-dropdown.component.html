@@ -6,8 +6,8 @@
   [filter]="true"
   filterBy="variant"
   [showClear]="true"
-  [style]="{'min-width': '300px'}"
-  placeholder="Select question variant">
+  [style]="{'width': '100%'}"
+  placeholder="Variant">
   <!-- Selected Option -->
   <ng-template pTemplate="seletedItem" let-selectedVariant>
     <div class="d-flex align-items-center">
@@ -16,7 +16,7 @@
   </ng-template>
   <!-- Items -->
   <ng-template let-variant pTemplate="item">
-    <div class="flex align-items-center gap-2">
+    <div class="d-flex align-items-center">
       <div>{{variant.variant}}</div>
     </div>
   </ng-template>

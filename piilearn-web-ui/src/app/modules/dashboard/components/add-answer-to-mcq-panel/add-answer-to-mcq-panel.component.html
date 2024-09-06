@@ -1,40 +1,39 @@
-<div class="col-3 d-flex justify-content-between mb-3 ms-5">
-  <p-panel
-    header="Save the question"
-  >
-    <!-- Display any error messages if any -->
-    <ng-template [ngIf]="errorMsg.length != 0">
-      <div class="alert alert-danger mb-3" role="alert">
-        <p *ngFor="let msg of errorMsg">{{msg}}</p>
-      </div>
-      <br>
-    </ng-template>
-
-    <div>
-      <!--  Mcq Question id    -->
-      <p-floatLabel>
-        <p-inputNumber
-          id="mcq-question-id-add-answer"
-          [style]="{'width':'100%'}"
-          [(ngModel)]="mcqAddAnswerRequest.questionId"/>
-        <label for="mcq-question-id-add-answer">Mcq Question Id</label>
-      </p-floatLabel>
-      <br>
-      <!-- Mcq Option id    -->
-      <p-floatLabel>
-        <p-inputNumber
-          id="mcq-option-id-add-answer"
-          [style]="{'width':'100%'}"
-          [(ngModel)]="mcqAddAnswerRequest.mcqOptionId"/>
-        <label for="mcq-option-id-add-answer">Mcq Option Id</label>
-      </p-floatLabel>
+<p-panel header="Save the question" class="h-100">
+  <!-- Display any error messages if any -->
+  <ng-template [ngIf]="errorMsg.length != 0">
+    <div class="alert alert-danger mb-3" role="alert">
+      <p *ngFor="let msg of errorMsg">{{msg}}</p>
     </div>
     <br>
-    <!-- Save answer -->
-    <div>
-      <button type="submit" (click)="saveMcqAnswer()" class="btn btn-secondary shadow-lg">
-        Save Answer
-      </button>
-    </div>
-  </p-panel>
-</div>
+  </ng-template>
+
+  <!--  Mcq Question id    -->
+  <div class="d-flex justify-content-center mt-3 mb-4">
+    <p-floatLabel>
+      <p-inputNumber
+        id="mcq-question-id-add-answer"
+        [style]="{'width':'100%'}"
+        [(ngModel)]="mcqAddAnswerRequest.questionId"/>
+      <label for="mcq-question-id-add-answer">Mcq Question Id</label>
+    </p-floatLabel>
+  </div>
+
+  <!-- Mcq Option id    -->
+  <div class="d-flex justify-content-center mb-3">
+    <p-floatLabel>
+      <p-inputNumber
+        id="mcq-option-id-add-answer"
+        [style]="{'width':'100%'}"
+        [(ngModel)]="mcqAddAnswerRequest.mcqOptionId"/>
+      <label for="mcq-option-id-add-answer">Mcq Option Id</label>
+    </p-floatLabel>
+  </div>
+
+  <!-- Save answer -->
+  <div class="d-flex justify-content-center">
+    <button type="submit" (click)="saveMcqAnswer()" class="btn btn-secondary shadow-lg">
+      Save Answer
+    </button>
+  </div>
+
+</p-panel>

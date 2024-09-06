@@ -15,6 +15,7 @@ import {QuestionIdSaveService} from "../../../../services/shared/questIdSave/que
 import {McqOptionFrontend} from "../../../../services/models/mcq-option-frontend";
 import {ERROR_MESSAGES} from "../../../../../error-message";
 import {Subscription} from "rxjs";
+import {AddAnswerToMcqPanelComponent} from "../add-answer-to-mcq-panel/add-answer-to-mcq-panel.component";
 
 @Component({
   selector: 'app-add-mcq-options-panel',
@@ -31,6 +32,7 @@ import {Subscription} from "rxjs";
     Button,
     CardModule,
     MathJaxParagraphComponent,
+    AddAnswerToMcqPanelComponent,
   ],
   templateUrl: './add-mcq-options-panel.component.html',
   styleUrl: './add-mcq-options-panel.component.scss'
