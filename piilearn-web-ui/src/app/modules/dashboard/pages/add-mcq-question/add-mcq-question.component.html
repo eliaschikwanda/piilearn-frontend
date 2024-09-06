@@ -1,19 +1,17 @@
 <p>add-mcq-question works!</p>
 <div class="container-fluid">
   <p-splitter
-    [style]= "{height: '100%' }"
-    styleClass="mb-10"
     layout="vertical">
     <!--    First panel: add question -->
     <ng-template pTemplate>
-      <div class="col d-flex align-items-center justify-content-center">
+      <div class="col-12">
         <app-add-mcq-question-panel/>
       </div>
     </ng-template>
 
     <!--    Second panel: add mcq options and save mcq-question answer -->
     <ng-template pTemplate>
-      <div class="col d-flex align-items-center justify-content-center">
+      <div class="col-12">
         <app-add-mcq-options-panel/>
       </div>
     </ng-template>
