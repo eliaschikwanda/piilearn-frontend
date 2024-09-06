@@ -42,6 +42,7 @@ the number of questions completed, acceptance rate (they percentage they get on 
 - Angular
 - OpenApi Generator for Angular *(Reduce work when writing frontend services)*
 - Bootstrap
+- PrimeNg *(UI library)*
 
 ### Contributors
 ***
