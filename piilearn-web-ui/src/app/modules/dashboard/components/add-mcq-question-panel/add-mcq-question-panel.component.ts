@@ -28,7 +28,6 @@ import {
   SelectedQuestionYearDropdownComponent
 } from "../selected-question-year-dropdown/selected-question-year-dropdown.component";
 import {CardModule} from "primeng/card";
-import {MathJaxService} from "../../../../services/mathjax/math-jax.service";
 import {MathJaxParagraphComponent} from "../math-jax-paragraph/math-jax-paragraph.component";
 import {QuestionIdSaveService} from "../../../../services/shared/questIdSave/questionIdSave.service";
 import {
