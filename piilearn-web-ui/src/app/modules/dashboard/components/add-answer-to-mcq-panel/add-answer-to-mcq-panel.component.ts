@@ -59,7 +59,7 @@ export class AddAnswerToMcqPanelComponent {
     }).subscribe({
       next: (res) => {
         this.mcqAddAnswerRequest.questionId = 0;
-        this.mcqAddAnswerRequest.questionId = 0;
+        this.mcqAddAnswerRequest.mcqOptionId = 0;
         // todo add something friendly
       },
       error: (err) => {

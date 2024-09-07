@@ -115,6 +115,7 @@ export class AddMcqQuestionPanelComponent implements OnInit{
       }).subscribe({
         next: (res) => {
           this.questionIdSave.setSavedQuestionId(res);
+          this.mcqQuestionRequest.mcqQuestionNumOnOriginalPaper = 0;
         },
         error: (err) => {
           if (err.error.validationErrors) {

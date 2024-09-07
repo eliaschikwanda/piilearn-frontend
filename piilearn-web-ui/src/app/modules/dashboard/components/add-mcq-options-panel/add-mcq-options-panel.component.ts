@@ -79,6 +79,9 @@ export class AddMcqOptionsPanelComponent implements OnInit{
       next: (res) => {
         this.addOrUpdateOption(res);
         this.mcqQuestionOptionIds.push(res);
+        // Clear the fields after save
+        this.mcqOptionRequest.optionDescription = '';
+        this.mcqOptionRequest.optionRep = '';
       },
       error: (err) => {
         if (err.error.validationErrors) {
