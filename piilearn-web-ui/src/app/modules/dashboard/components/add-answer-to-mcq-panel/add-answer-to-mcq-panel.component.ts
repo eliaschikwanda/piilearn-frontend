@@ -7,6 +7,8 @@ import {FormsModule} from "@angular/forms";
 import {McqAddAnswerRequest} from "../../../../services/models/mcq-add-answer-request";
 import {MultipleChoiceQuestionsService} from "../../../../services/services/multiple-choice-questions.service";
 import {ERROR_MESSAGES} from "../../../../../error-message";
+import {Subscription} from "rxjs";
+import {QuestionIdSaveService} from "../../../../services/shared/questIdSave/questionIdSave.service";
 
 @Component({
   selector: 'app-add-answer-to-mcq-panel',
@@ -29,9 +31,25 @@ export class AddAnswerToMcqPanelComponent {
     mcqOptionId: 0
   };
 
+  private questionIdSubscription!: Subscription;
+
   constructor(
-    private mcqQuestionService: MultipleChoiceQuestionsService
+    private mcqQuestionService: MultipleChoiceQuestionsService,
+    private questionIdSaveService: QuestionIdSaveService
   ) {
+  }
+
+  // Already populate the question id.
+  ngOnInit(): void {
+    this.questionIdSubscription = this.questionIdSaveService.questionId$.subscribe(id => {
+      this.mcqAddAnswerRequest.questionId = id;
+    });
+  }
+
+  ngDestroy(): void {
+    if (this.questionIdSubscription) {
+      this.questionIdSubscription.unsubscribe();
+    }
   }
 
   saveMcqAnswer() {
@@ -40,6 +58,8 @@ export class AddAnswerToMcqPanelComponent {
       body: this.mcqAddAnswerRequest
     }).subscribe({
       next: (res) => {
+        this.mcqAddAnswerRequest.questionId = 0;
+        this.mcqAddAnswerRequest.questionId = 0;
         // todo add something friendly
       },
       error: (err) => {
