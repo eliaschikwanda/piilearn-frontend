@@ -63,7 +63,8 @@
         <div class="col-12">
           <p-card header="Options added." class="h-100">
             <div *ngFor="let questionId of mcqQuestionOptionIds">
-              <p>{{mcqOptionFrontend[questionId].mcqOptionRep}} : {{mcqOptionFrontend[questionId].mcqOptionDes}} ({{questionId}})</p>
+              <p class="fw-bold">{{mcqOptionFrontend[questionId].mcqOptionRep.toUpperCase()}} ({{questionId}})</p>
+              <app-math-jax-paragraph [mathString]="mcqOptionFrontend[questionId].mcqOptionDes"/>
             </div>
           </p-card>
         </div>
