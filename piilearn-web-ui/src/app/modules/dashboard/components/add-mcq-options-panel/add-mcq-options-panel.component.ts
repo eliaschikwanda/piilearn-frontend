@@ -16,6 +16,9 @@ import {McqOptionFrontend} from "../../../../services/models/mcq-option-frontend
 import {ERROR_MESSAGES} from "../../../../../error-message";
 import {Subscription} from "rxjs";
 import {AddAnswerToMcqPanelComponent} from "../add-answer-to-mcq-panel/add-answer-to-mcq-panel.component";
+import {
+  McqCommunicationServiceService
+} from "../../../../services/mcq-communication-service/mcq-communication-service.service";
 
 @Component({
   selector: 'app-add-mcq-options-panel',
@@ -50,10 +53,12 @@ export class AddMcqOptionsPanelComponent implements OnInit{
 
   mcqOptionFrontend: McqOptionFrontend = {};
   private questionIdSubscription!: Subscription;
+  private resetSubscription!: Subscription ;
 
   constructor(
     private mcqOptionService: MultipleChoiceOptionsService,
-    private questionIdSave: QuestionIdSaveService
+    private questionIdSave: QuestionIdSaveService,
+    private mcqCommunicationService: McqCommunicationServiceService
   ) {
   }
 
@@ -62,11 +67,19 @@ export class AddMcqOptionsPanelComponent implements OnInit{
     this.questionIdSubscription = this.questionIdSave.questionId$.subscribe(id => {
       this.mcqOptionRequest.mcqQuestionId = id;
     });
+
+    this.resetSubscription = this.mcqCommunicationService.resetOptions$.subscribe(() => {
+      this.resetMcqOptionPanel();
+    })
   }
 
   ngOnDestroy(): void {
     if (this.questionIdSubscription) {
       this.questionIdSubscription.unsubscribe();
+    }
+
+    if (this.resetSubscription) {
+      this.resetSubscription.unsubscribe();
     }
   }
 
@@ -104,5 +117,11 @@ export class AddMcqOptionsPanelComponent implements OnInit{
       mcqOptionRep: this.mcqOptionRequest.optionRep,
       mcqOptionDes: this.mcqOptionRequest.optionDescription,
     };
+  }
+
+  private resetMcqOptionPanel() {
+    this.mcqOptionRequest.mcqQuestionId = 0;
+    this.mcqOptionFrontend = {};
+    this.mcqQuestionOptionIds = [];
   }
 }
