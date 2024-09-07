@@ -26,7 +26,6 @@ export class ViewMcqQuestionComponent {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.mcqQuestionCode = params.get('mcq-question-code');
-      console.log(this.mcqQuestionCode);
     })
   }
 }

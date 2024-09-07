@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {PanelModule} from "primeng/panel";
 import {CardModule} from "primeng/card";
 
@@ -13,5 +13,10 @@ import {CardModule} from "primeng/card";
   styleUrl: './panel-1-view-mcq.component.scss'
 })
 export class Panel1ViewMcqComponent {
+  @Input() mcqQuestionCode: string | null = '';
+
+  ngOnInit() {
+    console.log(this.mcqQuestionCode);
+  }
 
 }

@@ -4,12 +4,12 @@
       <p-splitter [panelSizes]="[50, 50]" class="h-100">
         <ng-template pTemplate>
           <div class="h-100 d-flex align-items-center justify-content-center">
-            <app-panel-1-view-mcq class="w-100 h-100"/>
+            <app-panel-1-view-mcq [mcqQuestionCode]="mcqQuestionCode" class="w-100 h-100"/>
           </div>
         </ng-template>
         <ng-template pTemplate>
           <div class="h-100 d-flex align-items-center justify-content-center">
-            <app-panel-2-view-mcq class="w-100 h-100"/>
+            <app-panel-2-view-mcq [mcqQuestionCode]="mcqQuestionCode" class="w-100 h-100"/>
           </div>
         </ng-template>
       </p-splitter>
