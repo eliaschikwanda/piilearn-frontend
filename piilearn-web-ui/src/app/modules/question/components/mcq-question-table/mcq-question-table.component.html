@@ -32,8 +32,10 @@
         </ng-template>
       </td>
       <td>
-        <p>{{mcqQuestion.mcqQuestionCode}}</p>
-        <app-truncate-text [text]="mcqQuestion.mcqQuestionDescription" [maxLength]="50"/>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <button (click)="viewMcqQuestion(mcqQuestion.mcqQuestionCode)" class="btn btn-transparent">{{mcqQuestion.mcqQuestionCode}}</button>
+          <app-truncate-text [text]="mcqQuestion.mcqQuestionDescription" [maxLength]="50"/>
+        </div>
       </td>
       <td>{{mcqQuestion.seasonCode}}</td>
       <td>{{mcqQuestion.subject}}</td>

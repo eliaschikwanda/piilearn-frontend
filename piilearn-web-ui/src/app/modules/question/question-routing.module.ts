@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {MainComponent} from "./pages/main/main.component";
 import {QuestionListComponent} from "./pages/question-list/question-list.component";
 import {authGuard} from "../../services/guard/auth.guard";
+import {ViewMcqQuestionComponent} from "./pages/view-mcq-question/view-mcq-question.component";
 
 const routes: Routes = [
   {
@@ -14,6 +15,11 @@ const routes: Routes = [
       {
         path: '',
         component: QuestionListComponent,
+        canActivate: [authGuard]
+      },
+      {
+        path: ':mcq-question-code',
+        component: ViewMcqQuestionComponent,
         canActivate: [authGuard]
       }
     ]

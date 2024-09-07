@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {PageResponseMcqQuestionResponse} from "../../../../services/models/page-response-mcq-question-response";
 import {PrimeTemplate} from "primeng/api";
 import {TableModule} from "primeng/table";
@@ -6,6 +6,7 @@ import {TruncateTextComponent} from "../truncate-text/truncate-text.component";
 import {StyleClassModule} from "primeng/styleclass";
 import {NgClass, NgIf} from "@angular/common";
 import {MultipleChoiceQuestionsService} from "../../../../services/services/multiple-choice-questions.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-mcq-question-table',
@@ -29,6 +30,7 @@ export class McqQuestionTableComponent implements OnInit {
 
   constructor(
     private questionService: MultipleChoiceQuestionsService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -53,5 +55,9 @@ export class McqQuestionTableComponent implements OnInit {
         console.error('Error fetching questions:', err);
       }
     });
+  }
+
+  viewMcqQuestion(mcqQuestionCode: string) {
+    this.router.navigate(["questions", mcqQuestionCode]);
   }
 }

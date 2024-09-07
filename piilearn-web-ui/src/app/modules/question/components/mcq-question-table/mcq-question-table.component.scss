@@ -5,3 +5,16 @@
 .odd-row {
   background-color: #f9f9f9; /* Light grey */
 }
+
+.btn-transparent {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  text-align: center;
+  padding: 0;
+}
+
+.btn-transparent:hover {
+  color: inherit;
+  font-weight: bold;
+}
