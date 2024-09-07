@@ -9,6 +9,9 @@ import {MultipleChoiceQuestionsService} from "../../../../services/services/mult
 import {ERROR_MESSAGES} from "../../../../../error-message";
 import {Subscription} from "rxjs";
 import {QuestionIdSaveService} from "../../../../services/shared/questIdSave/questionIdSave.service";
+import {
+  McqCommunicationServiceService
+} from "../../../../services/mcq-communication-service/mcq-communication-service.service";
 
 @Component({
   selector: 'app-add-answer-to-mcq-panel',
@@ -35,7 +38,8 @@ export class AddAnswerToMcqPanelComponent {
 
   constructor(
     private mcqQuestionService: MultipleChoiceQuestionsService,
-    private questionIdSaveService: QuestionIdSaveService
+    private questionIdSaveService: QuestionIdSaveService,
+    private mcqCommunicationService: McqCommunicationServiceService
   ) {
   }
 
@@ -60,6 +64,8 @@ export class AddAnswerToMcqPanelComponent {
       next: (res) => {
         this.mcqAddAnswerRequest.questionId = 0;
         this.mcqAddAnswerRequest.mcqOptionId = 0;
+        // Trigger reset of options in the other component
+        this.mcqCommunicationService.triggerResetOption();
         // todo add something friendly
       },
       error: (err) => {
