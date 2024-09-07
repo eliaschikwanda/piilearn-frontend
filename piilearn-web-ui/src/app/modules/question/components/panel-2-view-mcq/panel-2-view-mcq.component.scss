@@ -15,3 +15,21 @@ p-card {
   align-items: center;
   justify-content: center;
 }
+
+.custom-splitter {
+  height: 100%;
+  width: 100%;
+}
+
+.panel-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.custom-card {
+  width: 100%;
+  height: 100%;
+}
