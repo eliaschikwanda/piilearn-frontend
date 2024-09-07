@@ -1,16 +1,15 @@
-<div class="container-fluid full-height">
+<div class="container-fluid vh-100">
   <div class="row h-100">
     <div class="col-12 h-100 p-0">
-      <p-splitter [panelSizes]="[50, 50]"
-                  class="h-100 p-3">
+      <p-splitter [panelSizes]="[50, 50]" class="h-100">
         <ng-template pTemplate>
           <div class="h-100 d-flex align-items-center justify-content-center">
-            Panel 1
+            <app-panel-1-view-mcq class="w-100 h-100"/>
           </div>
         </ng-template>
         <ng-template pTemplate>
           <div class="h-100 d-flex align-items-center justify-content-center">
-            Panel 2
+            // Panel 2
           </div>
         </ng-template>
       </p-splitter>
