@@ -1,1 +1,10 @@
-<p>dashboard-sidebar-menu works!</p>
+<div class="col-12 me-3 ms-3 mb-3 py-3">
+  <p-sidebar [(visible)]="sidebarVisible">
+    <h3>Pπ Learn</h3>
+    <div class="col-12">
+      <button (click)="goToAddMcqQuestion()" class="btn btn-secondary shadow-lg btn-dashboard-look" type="submit">Add Mcq Question</button>
+    </div>
+  </p-sidebar>
+  <p-button rounded="true" (onClick)="sidebarVisible = true" icon="pi pi-angle-double-right" />
+</div>
+
