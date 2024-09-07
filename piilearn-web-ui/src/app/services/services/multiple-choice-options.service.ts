@@ -22,7 +22,7 @@ export class MultipleChoiceOptionsService extends BaseService {
   static readonly CreateMcqOptionPath = '/mcq-options';
 
   /**
-   * Create a new mutiple choice option.
+   * Create a new multiple choice option.
    *
    * Create a new multiple choice option.
    *
@@ -36,7 +36,7 @@ export class MultipleChoiceOptionsService extends BaseService {
   }
 
   /**
-   * Create a new mutiple choice option.
+   * Create a new multiple choice option.
    *
    * Create a new multiple choice option.
    *

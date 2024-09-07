@@ -8,14 +8,14 @@ import { RequestBuilder } from '../../request-builder';
 
 import { McqQuestionResponse } from '../../models/mcq-question-response';
 
-export interface GetMcqQuestionById$Params {
-  'question-id': number;
+export interface GetMcqQuestionByMcqQuestionCode$Params {
+  'mcq-question-code': string;
 }
 
-export function getMcqQuestionById(http: HttpClient, rootUrl: string, params: GetMcqQuestionById$Params, context?: HttpContext): Observable<StrictHttpResponse<McqQuestionResponse>> {
-  const rb = new RequestBuilder(rootUrl, getMcqQuestionById.PATH, 'get');
+export function getMcqQuestionByMcqQuestionCode(http: HttpClient, rootUrl: string, params: GetMcqQuestionByMcqQuestionCode$Params, context?: HttpContext): Observable<StrictHttpResponse<McqQuestionResponse>> {
+  const rb = new RequestBuilder(rootUrl, getMcqQuestionByMcqQuestionCode.PATH, 'get');
   if (params) {
-    rb.path('question-id', params['question-id'], {});
+    rb.path('mcq-question-code', params['mcq-question-code'], {});
   }
 
   return http.request(
@@ -28,4 +28,4 @@ export function getMcqQuestionById(http: HttpClient, rootUrl: string, params: Ge
   );
 }
 
-getMcqQuestionById.PATH = '/mcq-questions/find-by-id/{question-id}';
+getMcqQuestionByMcqQuestionCode.PATH = '/mcq-questions/find-by-mcq-code/{mcq-question-code}';

@@ -21,6 +21,8 @@ import { getMcqAnswerByQuestionId } from '../fn/multiple-choice-questions/get-mc
 import { GetMcqAnswerByQuestionId$Params } from '../fn/multiple-choice-questions/get-mcq-answer-by-question-id';
 import { getMcqQuestionById } from '../fn/multiple-choice-questions/get-mcq-question-by-id';
 import { GetMcqQuestionById$Params } from '../fn/multiple-choice-questions/get-mcq-question-by-id';
+import { getMcqQuestionByMcqQuestionCode } from '../fn/multiple-choice-questions/get-mcq-question-by-mcq-question-code';
+import { GetMcqQuestionByMcqQuestionCode$Params } from '../fn/multiple-choice-questions/get-mcq-question-by-mcq-question-code';
 import { McqAnswerResponse } from '../models/mcq-answer-response';
 import { McqQuestionResponse } from '../models/mcq-question-response';
 import { PageResponseMcqQuestionResponse } from '../models/page-response-mcq-question-response';
@@ -130,39 +132,6 @@ export class MultipleChoiceQuestionsService extends BaseService {
     );
   }
 
-  /** Path part for operation `getMcqQuestionById()` */
-  static readonly GetMcqQuestionByIdPath = '/mcq-questions/{question-id}';
-
-  /**
-   * Gets an mcq question by id.
-   *
-   * Gets an mcq question by id.
-   *
-   * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `getMcqQuestionById()` instead.
-   *
-   * This method doesn't expect any request body.
-   */
-  getMcqQuestionById$Response(params: GetMcqQuestionById$Params, context?: HttpContext): Observable<StrictHttpResponse<McqQuestionResponse>> {
-    return getMcqQuestionById(this.http, this.rootUrl, params, context);
-  }
-
-  /**
-   * Gets an mcq question by id.
-   *
-   * Gets an mcq question by id.
-   *
-   * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `getMcqQuestionById$Response()` instead.
-   *
-   * This method doesn't expect any request body.
-   */
-  getMcqQuestionById(params: GetMcqQuestionById$Params, context?: HttpContext): Observable<McqQuestionResponse> {
-    return this.getMcqQuestionById$Response(params, context).pipe(
-      map((r: StrictHttpResponse<McqQuestionResponse>): McqQuestionResponse => r.body)
-    );
-  }
-
   /** Path part for operation `findAllMcqQuestionsByUserSubjects()` */
   static readonly FindAllMcqQuestionsByUserSubjectsPath = '/mcq-questions/user-signed-subjects';
 
@@ -226,6 +195,72 @@ export class MultipleChoiceQuestionsService extends BaseService {
   getMcqAnswerByQuestionId(params: GetMcqAnswerByQuestionId$Params, context?: HttpContext): Observable<McqAnswerResponse> {
     return this.getMcqAnswerByQuestionId$Response(params, context).pipe(
       map((r: StrictHttpResponse<McqAnswerResponse>): McqAnswerResponse => r.body)
+    );
+  }
+
+  /** Path part for operation `getMcqQuestionByMcqQuestionCode()` */
+  static readonly GetMcqQuestionByMcqQuestionCodePath = '/mcq-questions/find-by-mcq-code/{mcq-question-code}';
+
+  /**
+   * Gets a mcq question by mcqQuestionCode.
+   *
+   * Gets a mcq question by mcqQuestionCode
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getMcqQuestionByMcqQuestionCode()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getMcqQuestionByMcqQuestionCode$Response(params: GetMcqQuestionByMcqQuestionCode$Params, context?: HttpContext): Observable<StrictHttpResponse<McqQuestionResponse>> {
+    return getMcqQuestionByMcqQuestionCode(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * Gets a mcq question by mcqQuestionCode.
+   *
+   * Gets a mcq question by mcqQuestionCode
+   *
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `getMcqQuestionByMcqQuestionCode$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getMcqQuestionByMcqQuestionCode(params: GetMcqQuestionByMcqQuestionCode$Params, context?: HttpContext): Observable<McqQuestionResponse> {
+    return this.getMcqQuestionByMcqQuestionCode$Response(params, context).pipe(
+      map((r: StrictHttpResponse<McqQuestionResponse>): McqQuestionResponse => r.body)
+    );
+  }
+
+  /** Path part for operation `getMcqQuestionById()` */
+  static readonly GetMcqQuestionByIdPath = '/mcq-questions/find-by-id/{question-id}';
+
+  /**
+   * Gets a mcq question by id.
+   *
+   * Gets a mcq question by id.
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getMcqQuestionById()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getMcqQuestionById$Response(params: GetMcqQuestionById$Params, context?: HttpContext): Observable<StrictHttpResponse<McqQuestionResponse>> {
+    return getMcqQuestionById(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * Gets a mcq question by id.
+   *
+   * Gets a mcq question by id.
+   *
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `getMcqQuestionById$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getMcqQuestionById(params: GetMcqQuestionById$Params, context?: HttpContext): Observable<McqQuestionResponse> {
+    return this.getMcqQuestionById$Response(params, context).pipe(
+      map((r: StrictHttpResponse<McqQuestionResponse>): McqQuestionResponse => r.body)
     );
   }
 

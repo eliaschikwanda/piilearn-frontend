@@ -24,8 +24,18 @@ export class ViewMcqQuestionComponent {
   }
 
   ngOnInit() {
+    this.getPassedParameters();
+
+    this.getMcqQuestionByCode();
+  }
+
+  getPassedParameters() {
     this.route.paramMap.subscribe(params => {
       this.mcqQuestionCode = params.get('mcq-question-code');
     })
+  }
+
+  private getMcqQuestionByCode() {
+
   }
 }
