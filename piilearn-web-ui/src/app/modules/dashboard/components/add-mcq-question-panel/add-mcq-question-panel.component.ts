@@ -31,6 +31,10 @@ import {CardModule} from "primeng/card";
 import {MathJaxService} from "../../../../services/mathjax/math-jax.service";
 import {MathJaxParagraphComponent} from "../math-jax-paragraph/math-jax-paragraph.component";
 import {QuestionIdSaveService} from "../../../../services/shared/questIdSave/questionIdSave.service";
+import {
+  McqCommunicationServiceService
+} from "../../../../services/mcq-communication-service/mcq-communication-service.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-add-mcq-question-panel',
@@ -57,7 +61,6 @@ import {QuestionIdSaveService} from "../../../../services/shared/questIdSave/que
   styleUrl: './add-mcq-question-panel.component.scss'
 })
 export class AddMcqQuestionPanelComponent implements OnInit{
-  // MathJX -->
   errorMsg: string[] = [];
   mcqQuestionRequest: McqQuestionRequest = {
     id: 0,
@@ -77,14 +80,19 @@ export class AddMcqQuestionPanelComponent implements OnInit{
 
   // SavedEntities
   public questionDescription: string = "CaCO\\(_3\\)(s) + 2HCl(aq) → CaCl\\(_2\\)(aq) + CO\\(_2\\)(g) + H\\(_2\\)O(l)";
+  private resetSubscription!: Subscription;
 
   constructor(
     private mcqQuestionService: MultipleChoiceQuestionsService,
-    private questionIdSave: QuestionIdSaveService
+    private questionIdSave: QuestionIdSaveService,
+    private mcqCommunicationService: McqCommunicationServiceService,
   ) {
   }
 
   ngOnInit(): void {
+    this.resetSubscription = this.mcqCommunicationService.resetOptions$.subscribe(() => {
+      this.resetMcqQuestionPanel();
+    })
   }
 
   // Get the selected variant from variant dropdown component
@@ -115,7 +123,6 @@ export class AddMcqQuestionPanelComponent implements OnInit{
       }).subscribe({
         next: (res) => {
           this.questionIdSave.setSavedQuestionId(res);
-          this.mcqQuestionRequest.mcqQuestionNumOnOriginalPaper = 0;
         },
         error: (err) => {
           if (err.error.validationErrors) {
@@ -166,5 +173,10 @@ export class AddMcqQuestionPanelComponent implements OnInit{
 
   onQuestionDescriptionChange(questionDescription: string) {
     this.questionDescription = questionDescription;
+  }
+
+  private resetMcqQuestionPanel() {
+    this.mcqQuestionRequest.mcqQuestionNumOnOriginalPaper = 0;
+    this.mcqQuestionRequest.mcqQuestionDescription = '';
   }
 }
