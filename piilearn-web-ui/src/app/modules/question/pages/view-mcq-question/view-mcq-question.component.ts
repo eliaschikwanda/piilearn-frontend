@@ -49,7 +49,6 @@ export class ViewMcqQuestionComponent {
     }).subscribe({
       next: (res) => {
         this.mcqQuestionResponse = res;
-        console.log(res);
       },
       error: (err) => {
         if (err.error.validationErrors) {
