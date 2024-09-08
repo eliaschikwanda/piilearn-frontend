@@ -14,6 +14,7 @@ import { MultipleChoiceOptionsService } from './services/multiple-choice-options
 import { ExamBoardService } from './services/exam-board.service';
 import { EducationLevelService } from './services/education-level.service';
 import { AuthenticationService } from './services/authentication.service';
+import { MultipleChoiceQuestionsAnswersService } from './services/multiple-choice-questions-answers.service';
 
 /**
  * Module that provides all services and configuration.
@@ -33,6 +34,7 @@ import { AuthenticationService } from './services/authentication.service';
     ExamBoardService,
     EducationLevelService,
     AuthenticationService,
+    MultipleChoiceQuestionsAnswersService,
     ApiConfiguration
   ],
 })

@@ -8,3 +8,4 @@ export { MultipleChoiceOptionsService } from './services/multiple-choice-options
 export { ExamBoardService } from './services/exam-board.service';
 export { EducationLevelService } from './services/education-level.service';
 export { AuthenticationService } from './services/authentication.service';
+export { MultipleChoiceQuestionsAnswersService } from './services/multiple-choice-questions-answers.service';
