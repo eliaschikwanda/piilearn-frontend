@@ -52,6 +52,18 @@
           Submit
         </button>
       </div>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+      <ng-template [ngIf]="isCorrectAnswer">
+        <!-- Accepted Label -->
+        <span class="label-accepted mb-2">Correct</span>
+      </ng-template>
+      <ng-template [ngIf]="isWrongAnswer">
+        <!-- Wrong Answer Label -->
+        <span class="label-wrong">Wrong Answer</span>
+      </ng-template>
     </ng-template>
   </p-card>
 </div>

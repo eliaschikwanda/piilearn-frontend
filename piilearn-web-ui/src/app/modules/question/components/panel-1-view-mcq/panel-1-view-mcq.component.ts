@@ -29,6 +29,8 @@ export class Panel1ViewMcqComponent implements OnInit, OnChanges{
   transformedMcqOptions: McqOptionFrontend = {};
   selectedOption: number = 0;
   responseMessageNeg: string = "";
+  isWrongAnswer: boolean = false;
+  isCorrectAnswer: boolean = false;
 
   ngOnChanges(changes: SimpleChanges): void {
     // Also check if it's not the first change to avoid duplicate processes with ngOnIt
@@ -42,11 +44,15 @@ export class Panel1ViewMcqComponent implements OnInit, OnChanges{
   }
 
   evaluateSelectedOption() {
+    // Reset all variables
     this.responseMessageNeg = "";
+    this.isWrongAnswer = false;
+    this.isCorrectAnswer = false;
+
     if (this.selectedOption == 0) {
       this.responseMessageNeg = "Select at least one option."
     } else {
-      console.log(this.selectedOption);
+      this.isWrongAnswer = true;
     }
   }
 
