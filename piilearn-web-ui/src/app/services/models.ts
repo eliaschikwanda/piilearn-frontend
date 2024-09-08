@@ -7,6 +7,7 @@ export type { EducationLevelRequest } from './models/education-level-request';
 export type { ExamBoardRequest } from './models/exam-board-request';
 export type { McqAddAnswerRequest } from './models/mcq-add-answer-request';
 export type { McqAnswerResponse } from './models/mcq-answer-response';
+export type { McqAnswerResponseWithId } from './models/mcq-answer-response-with-id';
 export type { McqOptionRequest } from './models/mcq-option-request';
 export type { McqQuestionRequest } from './models/mcq-question-request';
 export type { McqQuestionResponse } from './models/mcq-question-response';
