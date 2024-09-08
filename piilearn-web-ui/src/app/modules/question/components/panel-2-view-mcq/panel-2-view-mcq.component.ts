@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {CardModule} from "primeng/card";
 import {SplitterModule} from "primeng/splitter";
+import {McqQuestionResponse} from "../../../../services/models/mcq-question-response";
 
 @Component({
   selector: 'app-panel-2-view-mcq',
@@ -13,9 +14,5 @@ import {SplitterModule} from "primeng/splitter";
   styleUrl: './panel-2-view-mcq.component.scss'
 })
 export class Panel2ViewMcqComponent {
-  @Input() mcqQuestionCode: string | null = '';
-
-  ngOnInit() {
-    console.log(this.mcqQuestionCode);
-  }
+  @Input() mcqQuestionResponse!: McqQuestionResponse;
 }

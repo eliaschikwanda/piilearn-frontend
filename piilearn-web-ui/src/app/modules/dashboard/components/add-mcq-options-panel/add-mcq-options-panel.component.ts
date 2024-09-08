@@ -12,13 +12,13 @@ import {Button} from "primeng/button";
 import {CardModule} from "primeng/card";
 import {MathJaxParagraphComponent} from "../math-jax-paragraph/math-jax-paragraph.component";
 import {QuestionIdSaveService} from "../../../../services/shared/questIdSave/questionIdSave.service";
-import {McqOptionFrontend} from "../../../../services/models/mcq-option-frontend";
 import {ERROR_MESSAGES} from "../../../../../error-message";
 import {Subscription} from "rxjs";
 import {AddAnswerToMcqPanelComponent} from "../add-answer-to-mcq-panel/add-answer-to-mcq-panel.component";
 import {
   McqCommunicationServiceService
 } from "../../../../services/mcq-communication-service/mcq-communication-service.service";
+import {McqOptionFrontend} from "../../../../services/frontend-models/mcq-option-frontend";
 
 @Component({
   selector: 'app-add-mcq-options-panel',

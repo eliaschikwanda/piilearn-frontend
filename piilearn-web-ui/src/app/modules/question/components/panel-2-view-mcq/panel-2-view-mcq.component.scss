@@ -1,25 +1,6 @@
 .container-fluid {
   overflow: hidden;
 }
-p-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-}
-
-.full-page-container {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.custom-splitter {
-  height: 100%;
-  width: 100%;
-}
 
 .panel-content {
   display: flex;

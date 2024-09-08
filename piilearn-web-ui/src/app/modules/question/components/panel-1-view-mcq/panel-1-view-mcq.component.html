@@ -1,11 +1,12 @@
-<div class="container-fluid full-page full-page-container p-0">
-    <div class="h-100 w-100 col-12">
-      <div class="col-12 h-100">
-        <p-card header="Simple Card">
-          <p class="m-0">
-            Now working
-          </p>
-        </p-card>
-      </div>
-    </div>
+<div class="container-fluid col-12 h-100 w-100">
+  <p-card *ngIf="mcqQuestionResponse"
+          subheader="{{mcqQuestionResponse.mcqQuestionNumOnOriginalPaper}}."
+          class="custom-card"
+          header="{{mcqQuestionResponse.mcqQuestionCode}}">
+    <ng-template pTemplate="body">
+      <p class="col-12">
+        <app-math-jax-paragraph [mathString]="mcqQuestionResponse.mcqQuestionDescription || ''"/>
+      </p>
+    </ng-template>
+  </p-card>
 </div>
