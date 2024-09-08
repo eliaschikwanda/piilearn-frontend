@@ -1,0 +1,29 @@
+body {
+  overflow: hidden;
+}
+
+/* Style for the tab headers */
+.custom-tab-header {
+  display: inline-block;
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid blue;
+  background-color: transparent;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none !important;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.custom-tab-header:hover {
+  background-color: rgba(0, 0, 255, 0.1);
+  text-decoration: none !important;
+}
+
+.ui-state-active .custom-tab-header {
+  background-color: blue;
+  color: white;
+  text-decoration: none !important;
+}

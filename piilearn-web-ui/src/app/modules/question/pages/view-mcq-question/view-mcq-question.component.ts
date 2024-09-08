@@ -7,6 +7,8 @@ import {MultipleChoiceQuestionsService} from "../../../../services/services/mult
 import {ERROR_MESSAGES} from "../../../../../error-message";
 import {McqQuestionResponse} from "../../../../services/models/mcq-question-response";
 import {NgForOf, NgIf} from "@angular/common";
+import {TabViewModule} from "primeng/tabview";
+import {ScrollPanelModule} from "primeng/scrollpanel";
 
 @Component({
   selector: 'app-view-mcq-question',
@@ -16,7 +18,9 @@ import {NgForOf, NgIf} from "@angular/common";
     Panel1ViewMcqComponent,
     Panel2ViewMcqComponent,
     NgForOf,
-    NgIf
+    NgIf,
+    TabViewModule,
+    ScrollPanelModule
   ],
   templateUrl: './view-mcq-question.component.html',
   styleUrl: './view-mcq-question.component.scss'

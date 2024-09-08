@@ -3,14 +3,33 @@
       <div class="col-lg-6">
         <!--  Display errors if any  -->
         <div>
-          <ng-template [ngIf]="errorMsg.length != 0">
-            <div class="alert alert-danger mb-3" role="alert">
-              <p *ngFor="let msg of errorMsg">{{msg}}</p>
-            </div>
-            <br>
-          </ng-template>
+          <p-tabView>
+            <p-tabPanel>
+              <ng-template pTemplate="header">
+                <span class="custom-tab-header py-1">Question</span>
+              </ng-template>
 
-          <app-panel-1-view-mcq [mcqQuestionResponse]="mcqQuestionResponse"/>
+              <p-scrollPanel [style]="{'height' : '100vh', 'width' : '100%'}">
+                <ng-template [ngIf]="errorMsg.length != 0">
+                  <div class="alert alert-danger mb-3" role="alert">
+                    <p *ngFor="let msg of errorMsg">{{msg}}</p>
+                  </div>
+                  <br>
+                </ng-template>
+
+                <app-panel-1-view-mcq [mcqQuestionResponse]="mcqQuestionResponse"/>
+              </p-scrollPanel>
+            </p-tabPanel>
+
+            <p-tabPanel>
+              <ng-template pTemplate="header">
+                <span class="custom-tab-header py-1">Solution</span>
+              </ng-template>
+              <p-scrollPanel [style]="{'height' : '100vh', 'width' : '100%'}">
+                <p>Solutions should be here.</p>
+              </p-scrollPanel>
+            </p-tabPanel>
+          </p-tabView>
         </div>
       </div>
       <div class="col-lg-6">

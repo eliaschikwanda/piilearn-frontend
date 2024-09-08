@@ -56,13 +56,22 @@
     </ng-template>
 
     <ng-template pTemplate="footer">
+      <!-- Show errors  -->
+      <!--  todo do it better   -->
+      <ng-template [ngIf]="errorMsg.length != 0">
+        <div class="alert alert-danger mb-3" role="alert">
+          <p *ngFor="let msg of errorMsg">{{msg}}</p>
+        </div>
+        <br>
+      </ng-template>
+
       <ng-template [ngIf]="isCorrectAnswer">
         <!-- Accepted Label -->
-        <span class="label-accepted mb-2">Correct</span>
+        <span class="label-accepted mb-2">{{curOptionAnswer}}&nbsp;: Accepted</span>
       </ng-template>
       <ng-template [ngIf]="isWrongAnswer">
         <!-- Wrong Answer Label -->
-        <span class="label-wrong">Wrong Answer</span>
+        <span class="label-wrong">{{curOptionAnswer}}&nbsp;: Wrong Answer</span>
       </ng-template>
     </ng-template>
   </p-card>
