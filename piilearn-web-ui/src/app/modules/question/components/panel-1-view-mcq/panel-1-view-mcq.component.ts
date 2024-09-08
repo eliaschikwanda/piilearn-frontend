@@ -28,6 +28,7 @@ export class Panel1ViewMcqComponent implements OnInit, OnChanges{
   @Input() mcqQuestionResponse!: McqQuestionResponse;
   transformedMcqOptions: McqOptionFrontend = {};
   selectedOption: number = 0;
+  responseMessageNeg: string = "";
 
   ngOnChanges(changes: SimpleChanges): void {
     // Also check if it's not the first change to avoid duplicate processes with ngOnIt
@@ -38,6 +39,15 @@ export class Panel1ViewMcqComponent implements OnInit, OnChanges{
 
   ngOnInit(): void {
     this.transformMcqOptions();
+  }
+
+  evaluateSelectedOption() {
+    this.responseMessageNeg = "";
+    if (this.selectedOption == 0) {
+      this.responseMessageNeg = "Select at least one option."
+    } else {
+      console.log(this.selectedOption);
+    }
   }
 
   transformMcqOptions() {
@@ -53,6 +63,5 @@ export class Panel1ViewMcqComponent implements OnInit, OnChanges{
     }
     this.transformedMcqOptions = transformed;
   }
-
 
 }
